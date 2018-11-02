@@ -6,11 +6,17 @@ RUN mkdir -p /app
 WORKDIR /app
 
 # 将当前目录内容复制到位于 /app 中的容器中
-ADD . /app
+COPY . /app/temp
 
-# 安装 依赖
 RUN npm install -g hexo-cli &&\
-    npm install
+    cp /app/temp/package.json /app/package.json && \
+    cp /app/temp/package-lock.json /app/package-lock.json && \
+    npm install &&\
+    cp /app/temp/_config.yml /app/_config.yml && \
+    cp /app/temp/themes /app/themes && \
+    cp /app/temp/source /app/source && \
+    cp /app/temp/scaffolds /app/scaffolds &&\
+    rm -rf /app/temp
 
 # 在容器启动时运行
 CMD ["hexo", "server"]
