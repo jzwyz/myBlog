@@ -8,8 +8,7 @@ WORKDIR /app
 # 将当前目录内容复制到位于 /app 中的容器中
 COPY . /app/temp
 
-RUN npm install -g hexo-cli &&\
-    cp /app/temp/package.json /app/package.json && \
+RUN cp /app/temp/package.json /app/package.json && \
     cp /app/temp/package-lock.json /app/package-lock.json && \
     npm install &&\
     cp /app/temp/_config.yml /app/_config.yml && \
@@ -17,6 +16,7 @@ RUN npm install -g hexo-cli &&\
     cp /app/temp/source /app/source && \
     cp /app/temp/scaffolds /app/scaffolds &&\
     rm -rf /app/temp
-
+    
+RUN npm install -g hexo-cli
 # 在容器启动时运行
 CMD ["hexo", "server"]
