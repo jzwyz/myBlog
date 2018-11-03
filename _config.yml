@@ -79,3 +79,10 @@ theme: annie
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+search:
+  path: search.json
+  zipPath: search.zip
+  versionPath: searchVersion.txt
+  field: post
+  #field: post, page or all（3个可选参数）

@@ -17,6 +17,8 @@ RUN cp /app/temp/package.json /app/package.json &&\
     cp -r /app/temp/scaffolds /app/scaffolds &&\
     rm -rf /app/temp
     
-RUN npm install -g hexo-cli --registry=https://registry.npm.taobao.org
+RUN npm install -g hexo-cli --registry=https://registry.npm.taobao.org &&\
+    npm install hexo-generator-search-zip --save --registry=https://registry.npm.taobao.org
+
 # 在容器启动时运行
 CMD ["hexo", "server"]

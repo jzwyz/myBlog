@@ -18,9 +18,9 @@ say: Welcome
 background_image:
     enable: true
     #url: https://source.unsplash.com/collection/954550/1920x1080
-    url: img/1.jpg
+    # url: img/1.jpg
     #custom Radom img: https://XXX-youname-XXX.github.io/Random-img/
-    # customRadom_url: https://XXX-youname-XXX.github.io/Random-img/
+    customRadom_url: https://www.jzwyz.com/blog/Random-img/
     
 # show the motto
 # otherwise It shows the site description
@@ -75,9 +75,9 @@ social:
     enable: true
     github: https://github.com/jzwyz/
     weibo: http://weibo.com/jzwlivelsp/
-    email: javascript;
-    qq: javascript;
-    twitter: javascript;
+    email: /;
+    qq: /;
+    twitter: /;
 
 #copyright  
 since: 2017
@@ -98,7 +98,7 @@ gallery_data: gallery/data.json
 # Local search
 # Dependencies: https://github.com/flashlab/hexo-generator-search
 local_search:
-    enable: false
+    enable: true
     # if auto, trigger search by changing input
     # if manual, trigger search by pressing enter key or search button
     trigger: auto
