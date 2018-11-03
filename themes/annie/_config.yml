@@ -73,11 +73,11 @@ excerpt_link: 展开全文
 #social
 social:
     enable: true
-    github: http://github.com/
-    weibo: http://github.com/
-    email: http://github.com/
-    qq: http://github.com/
-    twitter: http://github.com/
+    github: https://github.com/jzwyz/
+    weibo: http://weibo.com/jzwlivelsp/
+    email: javascript;
+    qq: javascript;
+    twitter: javascript;
 
 #copyright  
 since: 2017
