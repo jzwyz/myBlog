@@ -20,7 +20,7 @@ background_image:
     #url: https://source.unsplash.com/collection/954550/1920x1080
     url: img/1.jpg
     #custom Radom img: https://XXX-youname-XXX.github.io/Random-img/
-    customRadom_url: https://www.jzwyz.com/blog/Random-img/
+    customRadom_url: https://www.jzwyz.com/blog/images/
     
 # show the motto
 # otherwise It shows the site description
