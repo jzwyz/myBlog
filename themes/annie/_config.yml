@@ -8,7 +8,7 @@ menu:
     相册: /gallery
 
 # header
-avtor: /img/logo.png
+avtor: https://images.jzwyz.com/blog/logo.png
 # if the value of avtor is false
 say: Welcome 
 
@@ -18,9 +18,9 @@ say: Welcome
 background_image:
     enable: false
     #url: https://source.unsplash.com/collection/954550/1920x1080
-    url: img/1.jpg
+    url: https://images.jzwyz.com/blog/1.jpg
     #custom Radom img: https://XXX-youname-XXX.github.io/Random-img/
-    customRadom_url: https://images.jzwyz.com/randomimg/
+    customRadom_url: https://images.jzwyz.com/blog/randomimgs/
     
 # show the motto
 # otherwise It shows the site description
@@ -30,7 +30,7 @@ motto: true
 index_style: cart
 
 #index_cart_cover
-cover: img/cart_cover.jpg
+cover: https://images.jzwyz.com/blog/cart_cover.jpg
 
 #page
 page_name:
