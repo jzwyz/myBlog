@@ -14,22 +14,20 @@ say: Welcome
 
 # background_image
 # img/01.jpg
-# https://source.unsplash.com/collection/954550/1920x1080
+# 背景图片
 background_image:
-    enable: false
-    #url: https://source.unsplash.com/collection/954550/1920x1080
-    url: https://images.jzwyz.com/blog/1.jpg
-    #custom Radom img: https://XXX-youname-XXX.github.io/Random-img/
-    customRadom_url: https://images.jzwyz.com/blog/randomimgs/
+    enable: false # 是否开启
+    url: https://images.jzwyz.com/blog/1.jpg # 显示的图片
+    customRadom_url: https://images.jzwyz.com/blog/randomimgs/ # 随机背景图片，如果你偏向于性能则不应该使用（使用随机图片 应将 enable: false ）
     
-# show the motto
-# otherwise It shows the site description
+# show the motto 显示座右铭
+# otherwise It shows the site description 显示网站简绍
 motto: true
 
-#index-style: pure or cart
+#index-style: pure or cart 博客默认模板、样式
 index_style: cart
 
-#index_cart_cover
+#index_cart_cover 博客默认主题图片
 cover: https://images.jzwyz.com/blog/cart_cover.jpg
 
 #page
