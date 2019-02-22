@@ -9,4 +9,7 @@
 1、使用到的图片资源 由 https://source.unsplash.com 提供
 ```
 
-
+## 启动项目
+```bash
+$ docker run -d -p 4000:4000  --rm -v /source:/app/source --network=[network-name] & --name=webblog [container-images-id]
+```

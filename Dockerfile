@@ -9,11 +9,9 @@ WORKDIR /app
 COPY . /app/temp
 
 RUN cp /app/temp/package.json /app/package.json &&\
-    cp /app/temp/package-lock.json /app/package-lock.json &&\
     npm install --registry=https://registry.npm.taobao.org &&\
     cp /app/temp/_config.yml /app/_config.yml &&\
     cp -r /app/temp/themes /app/themes &&\
-    cp -r /app/temp/source /app/source &&\
     cp -r /app/temp/scaffolds /app/scaffolds &&\
     rm -rf /app/temp
     
