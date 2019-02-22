@@ -11,5 +11,5 @@
 
 ## 启动项目
 ```bash
-$ docker run -d  --rm -v /source:/app/source --network=app-bridge & --name=webblog [container-images-id]
+$ docker run -d --rm -v /source:/app/source --network=app-bridge --name=webblog [container-images-id]
 ```
