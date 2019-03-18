@@ -24,8 +24,8 @@ permalink_defaults:
 # 网站综合内容设置：
 SEOTitle: 蒋哥哥的博客 | Jgg's Blog
 email: jiangzwyz@163.com
-description: "蒋哥哥的博客"
-keyword: "个人"
+description: 蒋哥哥的博客
+keyword: 个人
 
 # SNS settings
 # 一些社交平台地址，支持以下几种：
