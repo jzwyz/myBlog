@@ -8,7 +8,7 @@ subtitle: Jzw And Lsp
 description: Shmile
 keywords:
 author: Jzw
-language:
+language: zh
 timezone:
 
 # URL
@@ -24,8 +24,7 @@ permalink_defaults:
 # 网站综合内容设置：
 SEOTitle: 蒋哥哥的博客 | Jgg's Blog
 email: jiangzwyz@163.com
-description: 蒋哥哥的博客
-keyword: 个人
+keyword: "个人"
 
 # SNS settings
 # 一些社交平台地址，支持以下几种：
@@ -39,18 +38,18 @@ linkedin_username:  ""
 # Build settings
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
-sidebar-avatar: img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: https://images.jzwyz.com/blog/32916897.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Friends
 # 友情链接
 friends: [
-    {
-        title: "10000H",
-        href: "https://www.10000h.top"
-    },{
-        title: "It helps SEO",
-        href: "#"
-    }
+    # {
+    #     title: "10000H",
+    #     href: "https://www.10000h.top"
+    # },{
+    #     title: "It helps SEO",
+    #     href: "#"
+    # }
 ]
 
 #comment:
@@ -65,7 +64,7 @@ comment:
    script: '#'
 
 donate:
-  img: img/donate.jpg
+  # img: img/donate.jpg
   content: 感谢鼓励
 
 # The following content is not recommended to modify
