@@ -14,3 +14,5 @@
 $ docker run -d --rm -v /source:/app/source --network=app-bridge --name=webblog [container-images-id]
 $ docker run -d -p 4000:4000 --rm -v ~/myWorkspace/myproject/myblog/source:/app/source --network=app-bridge --name=webblog myblog:1.0
 ```
+
+docker run -d --rm -v ~/../workspace/my-blog/source:/app/source --network=app-bridge --name=webblog myblog:1.0
