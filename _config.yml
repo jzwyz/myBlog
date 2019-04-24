@@ -3,28 +3,23 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
+# 网站综合内容设置：
 title: Shmile Blog
-subtitle: Jzw
-description: Shmile
-keywords:
-author: Jzw
+subtitle: Shmile
+description: 一个小伙子的个人博客
+author: Jason
 language: zh
 timezone:
+SEOTitle: 蒋哥哥的博客 | Jgg's Blog
+email: jiangzwyz@163.com
+keyword: "蒋哥哥的博客"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://blog.jzwyz.com/
+url: https://blog.jzwyz.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
-
-#Custom Setting Start
-
-# Site settings
-# 网站综合内容设置：
-SEOTitle: 蒋哥哥的博客 | Jgg's Blog
-email: jiangzwyz@163.com
-keyword: "个人"
 
 # SNS settings
 # 一些社交平台地址，支持以下几种：
@@ -43,29 +38,34 @@ sidebar-avatar: img/avatar.jpg      # use absolute URL, seeing it's used in both
 # Friends
 # 友情链接
 friends: [
-    # {
-    #     title: "10000H",
-    #     href: "https://www.10000h.top"
-    # },{
-    #     title: "It helps SEO",
-    #     href: "#"
-    # }
+    {
+        title: "10000H",
+        href: "https://www.10000h.top"
+    },{
+        title: "It helps SEO",
+        href: "#"
+    }
 ]
 
-#comment:
+# comment:
 #  type: gitment
-#  id: your-id-created-by-https://github.com/settings/applications/new
-#  secret: your-secret-created-by-https://github.com/settings/applications/new
-#  owner: aircloud
-#  repo: hexo-aircloud-blog
+#  id: 7b0d15f37ac970293497
+#  secret: 6fb76feafa230d0e0ea33b8a2b928071580462d7
+#  owner: jzwyz
+#  repo: shmile-blog-issue
+
+# comment:
+#    type: disqus
+#    script: '#'
 
 comment:
-   type: disqus
-   script: '#'
+   type: livere
+   livere_id: city
+   livere_uid: MTAyMC80Mzg5My8yMDQyOA==
 
-donate:
-  # img: img/donate.jpg
-  content: 感谢鼓励
+# donate:
+#   img: img/donate.jpg
+#   content: 感谢鼓励
 
 # The following content is not recommended to modify
 # 搜索数据文件路径设置，不建议改动：

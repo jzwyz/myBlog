@@ -7,6 +7,7 @@
 ## 其他说明
 ```
 1、使用到的图片资源 由 https://source.unsplash.com 提供
+2、db.json 是 annie 主题使用
 ```
 
 ## 运行镜像 映射内部4000端口到本机4000端口 使用本机source文件夹作为容器内部/app/source数据卷 --rm参数
