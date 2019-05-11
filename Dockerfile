@@ -1,7 +1,11 @@
 # 将官方 node:9.3.0-alpine 运行时用作父镜像
 FROM node:9.3.0-alpine
 
+# 设置时区
+RUN cp /usr/share/zoneinfo/PRC /etc/localtime
+
 RUN mkdir -p /app
+
 # 将工作目录设置为 /app
 WORKDIR /app
 
