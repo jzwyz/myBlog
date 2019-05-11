@@ -2,7 +2,9 @@
 FROM node:9.3.0-alpine
 
 # 设置时区
-RUN cp /usr/share/zoneinfo/PRC /etc/localtime
+RUN apk add --no-cache tzdata && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone && \
+    apk del tzdata
 
 RUN mkdir -p /app
 
