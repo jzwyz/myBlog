@@ -1,11 +1,6 @@
 # 将官方 node:9.3.0-alpine 运行时用作父镜像
 FROM node:9.3.0-alpine
 
-# 设置时区
-RUN apk add --no-cache tzdata && \
-    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone && \
-    apk del tzdata
-
 RUN mkdir -p /app
 
 # 将工作目录设置为 /app
@@ -15,6 +10,7 @@ WORKDIR /app
 COPY . /app/temp
 
 RUN cp /app/temp/package.json /app/package.json &&\
+    cp /app/temp/package-lock.json /app/package-lock.json &&\
     npm update --registry=https://registry.npm.taobao.org &&\
     npm install --registry=https://registry.npm.taobao.org &&\
     cp -r /app/temp/public /app/public &&\
@@ -25,8 +21,7 @@ RUN cp /app/temp/package.json /app/package.json &&\
     cp /app/temp/_config.yml /app/_config.yml &&\
     rm -rf /app/temp
     
-RUN npm install -g hexo-cli --registry=https://registry.npm.taobao.org &&\
-    npm install hexo-generator-search-zip --save --registry=https://registry.npm.taobao.org
+RUN npm i -g hexo-cli --registry=https://registry.npm.taobao.org
 
 # 在容器启动时运行
 CMD ["hexo", "server"]
