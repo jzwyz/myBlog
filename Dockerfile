@@ -13,7 +13,6 @@ RUN cp /app/temp/package.json /app/package.json &&\
     cp /app/temp/package-lock.json /app/package-lock.json &&\
     npm update --registry=https://registry.npm.taobao.org &&\
     npm install --registry=https://registry.npm.taobao.org &&\
-    cp -r /app/temp/public /app/public &&\
     mkdir /app/themes &&\
     cp -r /app/temp/themes/aircloud /app/themes/aircloud &&\
     cp -r /app/temp/scaffolds /app/scaffolds &&\
