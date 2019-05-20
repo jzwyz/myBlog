@@ -1,7 +1,7 @@
 ---
 title: Docker学习笔记
 date: 2019-05-16 11:29:14
-tags:
+tags: 容器
 ---
 
 我是一个java程序猿, 当前已经转为nodejs开发, 因为工作需要接触docker到目前为止已经有一年多的时间了, 一下是我学习和使用docker的一些总结.
@@ -171,7 +171,7 @@ docker run -d -p 3306:3306 --rm -v /mysql/db:/var/lib/mysql --name mysql mysql;
 
 数据类的容器,官方都会说明其数据文件存放的位置, 当然我们也可以挂载网盘到容器中.
 
-![ ](../docker/docker_01.png)
+![ ](../img/docker_01.png)
 
 ### 容器网络
 
