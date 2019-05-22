@@ -1,1 +1,0 @@
-docker run -d -p 4000:4000 --rm -v /source:/app/source --network=app-bridge --name=webblog myblog:1.1
