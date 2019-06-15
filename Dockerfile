@@ -9,16 +9,17 @@ WORKDIR /app
 # 将当前目录内容复制到位于 /app 中的容器中
 COPY . /app/temp
 
-RUN cp /app/temp/package.json /app/package.json &&\
-    cp /app/temp/package-lock.json /app/package-lock.json &&\
-    npm update --registry=https://registry.npm.taobao.org &&\
-    npm install --registry=https://registry.npm.taobao.org &&\
-    mkdir /app/themes &&\
-    cp -r /app/temp/themes/aircloud /app/themes/aircloud &&\
-    cp -r /app/temp/scaffolds /app/scaffolds &&\
-    cp -r /app/temp/source /app/source &&\
-    cp /app/temp/_config.yml /app/_config.yml &&\
-    rm -rf /app/temp
+RUN cp /app/temp/package.json /app/package.json \
+    && cp /app/temp/package-lock.json /app/package-lock.json \
+    && npm update --registry=https://registry.npm.taobao.org \
+    && npm install --registry=https://registry.npm.taobao.org \
+    && mkdir /app/themes \
+    && cp -r /app/temp/themes/aircloud /app/themes/aircloud \
+    && cp -r /app/temp/scaffolds /app/scaffolds \
+    && cp -r /app/temp/source /app/source \
+    && cp /app/temp/_config.yml /app/_config.yml \
+    && wget -x -O config/config.json http://192.168.2.161:8080/configfiles/json/2/default/application?ip=127.0.0.1 \
+    && rm -rf /app/temp
     
 RUN npm i -g hexo-cli --registry=https://registry.npm.taobao.org
 
