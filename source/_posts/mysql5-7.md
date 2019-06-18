@@ -75,7 +75,9 @@ REVOKE insert ON test.* FROM 'testuser'@'%';
 
 #### 函数
 
-##### 类型转换函数 CAST()和CONVERT()
+##### 类型转换函数
+
+用于类型转化 CAST()和CONVERT()
 
 ```sh
 CAST(value as type);
@@ -168,6 +170,12 @@ mysql> SELECT CAST('3.35' AS signed);
    1. unix_timestamp 一般为10位的时间戳，如:1417363200
    2. format *可选* 转换之后的时间字符串显示的格式;
 
+##### 随机数 rand()
+
+```sh
+select rand()
+```
+
 ## 相关链接
 
 [MySQL CAST与CONVERT 函数的用法](https://www.cnblogs.com/chenqionghe/p/4675844.html)
@@ -176,4 +184,4 @@ mysql> SELECT CAST('3.35' AS signed);
 
 ## 结语
 
-...
+.asdfasasdfasd

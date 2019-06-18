@@ -76,13 +76,13 @@ tags: 基础
 
 符号(*)分割线
 
-***
+******
 
 #### 图片
 
 基本语法
 
-```
+```sh
 ![图片语法](https://images.jzwyz.com/blog/tpurl.png "这是对图片语法的说明图")
 ![图片alt](https://images.jzwyz.com/blog/1.jpg "图片title")
 ![链接语法](https://images.jzwyz.com/blog/urlsm.png "链接语法说明")
@@ -103,7 +103,7 @@ tags: 基础
 
 与图片语法类似, 开始 不要 ! 符号
 
-```
+```sh
 [百度](https://www.baidu.com "百度一下")
 [Github](https://www.github.com "去Github")
 ```
