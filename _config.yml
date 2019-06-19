@@ -4,15 +4,15 @@
 
 # Site
 # 网站综合内容设置：
-title: Shmile Blog
-subtitle: Shmile
+title: Jason Blog
+subtitle: Jason
 description: 一个小伙子的个人博客
 author: Jason
 language: zh
 timezone:
-SEOTitle: 蒋哥哥的博客 | Jgg's Blog
+SEOTitle: Jason的博客 | Jason's Blog
 email: jiangzwyz@163.com
-keyword: "蒋哥哥的博客"
+keyword: "Jason的博客"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
