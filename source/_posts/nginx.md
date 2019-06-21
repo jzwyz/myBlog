@@ -238,6 +238,10 @@ http
 
 ...
 
+### nginx 日志配置
+
+[日志配置 参考](https://www.cnblogs.com/biglittleant/p/8979856.html)
+
 ## 进阶使用
 
 再文章开始, 我们使用docker安装nginx, 我们完全使用了nginx官方的默认配置, 这里我们将使用自定义配置来启动nginx
