@@ -1,10 +1,11 @@
 ---
-title: mysql5.7学习笔记
+title: mysql学习笔记
 date: 2019-06-05 17:00:05
 tags: 数据库
 ---
 
-这里主要记录日常使用mysql5.7的一些操作
+这篇文章主要是我日常使用mysql的一些记录
+我使用的mysql版本是:`5.7`
 
 ## 用户
 
@@ -128,9 +129,37 @@ mysql> SELECT CAST('3.35' AS signed);
 
 ##### 格式化函数
 
-1. 时间格式化函数 DATE_FORMAT(date, format)
-   1. date 时间
-   2. format 参数格式有
+##### 随机数 rand()
+
+```sh
+select rand()
+```
+
+#### 时间
+
+##### 获取系统时间 `now()` 和 `sysdate()` 这两个函数的区别是, `now()`在执行前就确认了值, `sysdate()`在执行时动态确认值
+
+例子:
+
+```sh
+> select now(), sleep(3), now();
+> select sysdate(), sleep(3), sysdate();
+```
+
+> 感兴趣的可以看一下这两天sql执行的结果
+
+##### 获得当前时间戳函数：current_timestamp, current_timestamp()
+
+语法: `select current_timestamp, current_timestamp()`
+
+##### 日期、时间转换
+
+时间转换为字符串 date_format(date,format), time_format(time,format)
+
+时间格式化函数 DATE_FORMAT(date, format)
+
+1. date 时间
+2. format 参数格式有
 
 参数|说明
 :----:|:-----------------------:
@@ -166,15 +195,77 @@ mysql> SELECT CAST('3.35' AS signed);
 %Y|年，4 位
 %y|年，2 位
 
-1. 格式化函数 FROM_UNIXTIME(unix_timestamp, [format])
-   1. unix_timestamp 一般为10位的时间戳，如:1417363200
-   2. format *可选* 转换之后的时间字符串显示的格式;
+字符串转换为时间 str_to_date(str, format)
 
-##### 随机数 rand()
+(日期、天数）转换函数：to_days(date), from_days(days)
+
+(时间、秒）转换函数：time_to_sec(time), sec_to_time(seconds)
+
+拼凑日期、时间函数：makdedate(year,dayofyear), maketime(hour,minute,second)
+
+Unix 时间戳、日期）转换函数
+
+1. unix_timestamp(),
+2. unix_timestamp(date),
+3. from_unixtime(unix_timestamp),
+4. from_unixtime(unix_timestamp,format)
+   1. 格式化函数 FROM_UNIXTIME(unix_timestamp, [format])
+   2. unix_timestamp 一般为10位的时间戳，如:1417363200
+   3. format *可选* 转换之后的时间字符串显示的格式;
+
+##### 日期时间计算函数
+
+增加一个时间间隔：date_add()
+
+> adddate(), addtime()函数，可以用 date_add() 来替代
+
+日期减去一个时间间隔：date_sub()
+
+> date_sub() 日期时间函数 和 date_add() 用法一致
+
+日期、时间相减函数：datediff(date1,date2), timediff(time1,time2)
+
+1. datediff 返回天数差距
+2. timediff 返回time差距
+
+> 注意：timediff(time1,time2) 函数的两个参数类型必须相同。
+
+时间戳（timestamp）转换、增、减函数
+
+1. timestamp(date) -- date to timestamp
+2. timestamp(dt,time) -- dt + time
+3. timestampadd(unit,interval,datetime_expr) --
+4. timestampdiff(unit,datetime_expr1,datetime_expr2) --
+
+示例:
 
 ```sh
-select rand()
+select timestamp('2008-08-08'); -- 2008-08-08 00:00:00
+select timestamp('2008-08-08 08:00:00', '01:01:01'); -- 2008-08-08 09:01:01
+select timestamp('2008-08-08 08:00:00', '10 01:01:01'); -- 2008-08-18 09:01:01
+
+select timestampadd(day, 1, '2008-08-08 08:00:00'); -- 2008-08-09 08:00:00
+select date_add('2008-08-08 08:00:00', interval 1 day); -- 2008-08-09 08:00:00
+
+timestampadd() 函数类似于 date_add()。
+select timestampdiff(year,'2002-05-01','2001-01-01'); -- -1
+select timestampdiff(day ,'2002-05-01','2001-01-01'); -- -485
+select timestampdiff(hour,'2008-08-08 12:00:00','2008-08-08 00:00:00'); -- -12
+
+select datediff('2008-08-08 12:00:00', '2008-08-01 00:00:00'); -- 7
 ```
+
+> timestampdiff() 函数就比 datediff() 功能强多了，datediff() 只能计算两个日期（date）之间相差的天数。
+
+时区（timezone）转换函数
+
+```sh
+convert_tz(dt,from_tz,to_tz)
+
+select convert_tz('2008-08-08 12:00:00', '+08:00', '+00:00'); -- 2008-08-08 04:00:00
+```
+
+> 时区转换也可以通过 date_add, date_sub, timestampadd 来实现
 
 ## 相关链接
 
@@ -184,4 +275,4 @@ select rand()
 
 ## 结语
 
-.asdfasasdfasd
+每天都要去折腾才能进步
