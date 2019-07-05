@@ -41,9 +41,9 @@ friends: [
     {
         title: "Linux 命令搜索",
         href: "https://wangchujiang.com/linux-command/"
-    },{
-        title: "It helps SEO",
-        href: "#"
+    }, {
+      title: "MSDN",
+      href: "https://msdn.itellyou.cn/"
     }
 ]
 
