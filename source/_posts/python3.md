@@ -1,10 +1,10 @@
 ---
-title: python3 学习
+title: Python3 学习
 date: 2019-07-04 15:16:11
-tags:
+tags: 编程语言
 ---
 
-本篇博客学习总结于[jackfrued/Python-100-Days](https://github.com/jackfrued/Python-100-Days)
+本篇博客学习总结于[Python - 100天从新手到大师](https://github.com/jackfrued/Python-100-Days)
 
 ## Python是一个“优雅”、“明确”、“简单”的编程语言
 
@@ -30,7 +30,6 @@ tags:
 2. Tuple（元组）: 不可修改列表
 3. Set（集合）: 同数学中的集合, 不可重复, 可以技术 交集、并集、差集等运算
 4. Dictionary（字典）: 每一个元素都是由 “键值对” 组成
-
 
 ## 字符串格式化代码
 
