@@ -97,7 +97,6 @@
   padding: 10px;
 }
 .post-content pre code {
-  color: white;
   line-height: 175%;
 }
 .post-content h1 {
@@ -129,6 +128,9 @@
   color: #333333;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.post-content figcaption {
+  text-align: center;
 }
 #comment-container {
   text-indent: 0;

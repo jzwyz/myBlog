@@ -18,7 +18,6 @@ RUN cp /app/temp/package.json /app/package.json \
     && cp -r /app/temp/scaffolds /app/scaffolds \
     && cp -r /app/temp/source /app/source \
     && cp /app/temp/_config.yml /app/_config.yml \
-    && wget -x -O config/config.json http://192.168.2.161:8080/configfiles/json/2/default/application?ip=127.0.0.1 \
     && rm -rf /app/temp
     
 RUN npm i -g hexo-cli --registry=https://registry.npm.taobao.org
