@@ -74,7 +74,7 @@ tags: 编程语言
 
 ## 文件操作符
 
-python内置的 `open` 函数
+### python内置的 `open` 函数
 
 操作模式|具体含义
 :----:|:--------------------:
@@ -85,3 +85,134 @@ python内置的 `open` 函数
 'b'|二进制模式
 't'|文本模式（默认）
 '+'|更新（既可以读又可以写）
+
+### python的`JSON`模块
+
+常用的四个函数
+
++ dump - 将Python对象按照JSON格式序列化到文件中
++ dumps - 将Python对象处理成JSON格式的字符串
++ load - 将文件中的JSON数据反序列化成对象
++ loads - 将字符串的内容反序列化成Python对象
+
+这里出现了两个概念，一个叫序列化，一个叫反序列化。自由的百科全书维基百科上对这两个概念是这样解释的：“序列化（serialization）在计算机科学的数据处理中，是指将数据结构或对象状态转换为可以存储或传输的形式，这样在需要的时候能够恢复到原先的状态，而且通过序列化的数据重新获取字节时，可以利用这些字节来产生原始对象的副本（拷贝）。与这个过程相反的动作，即从一系列字节中提取数据结构的操作，就是反序列化（deserialization）”。
+
+### 实际操作
+
+```python
+#!/usr/local/bin/python3
+"""
+文件操作和异常处理及JSON数据
+"""
+
+import json
+
+
+def read():
+    """读取文件"""
+    try:
+        fs = open('a.txt', 'r', encoding='utf-8')
+        print(fs.read())
+    except FileNotFoundError:
+        print('文件不存在')
+    finally:
+        if fs:
+            fs.close()
+
+
+def writh(cmd='w'):
+    """写文件"""
+    try:
+        txt = (x for x in range(600, 1000))
+        fs = open('b.txt', cmd, encoding='utf-8')
+        for t in txt:
+            fs.write(str(t) + '\n')
+    except IOError:
+        print('IO异常')
+    finally:
+        if fs:
+            fs.close()
+
+
+def with_def():
+    """
+    使用with关键字,指定文件对象的上下文环境并在离开上下文环境时自动释放文件资源
+    """
+    try:
+        """一次读取所有文件"""
+        with open('a.txt', 'r', encoding='utf-8') as f1:
+            print(f1.read())
+
+        """使用for-in逐行读取"""
+        with open('a.txt', encoding='utf-8', mode='r') as f2:
+            for line in f2:
+                print(line, end='')
+    except Exception:
+        print('错误', Exception)
+
+
+def buffer_file_def():
+    """读取二进制文件(拷贝图片)"""
+    try:
+        """复制文件"""
+        with open('/Users/aolei/Pictures/my images/32916897.jpg', mode='rb') as f:
+            data = f.read()
+            print(data)
+
+        """粘贴到当前目录下"""
+        with open('head.jpg', mode='wb') as f:
+            f.write(data)
+            print('Copy Success')
+    except FileNotFoundError :
+        print('文件不存在')
+    except UnicodeEncodeError:
+        print('编码异常')
+
+
+def json_data_def():
+    """python对json数据的处理"""
+    myuser = {
+        'name':'李黑',
+        'sex': '男',
+        'age': 0,
+        'qq': 957658,
+        'friends': ['王大锤', '白元芳'],
+        'cars': [
+            {'brand': 'BYD', 'max_speed': 180},
+            {'brand': 'Audi', 'max_speed': 280},
+            {'brand': 'Benz', 'max_speed': 320}
+        ]
+    }
+
+    try:
+        """将python字典对象序列化为json文件"""
+        with open('users.json', 'w', encoding='utf-8') as f:
+            json.dump(myuser, f)
+
+        """将json文件反序列化为python字典对象"""
+        with open('users.json', 'r', encoding = 'utf-8') as f:
+            curr_user = json.load(f)
+            print(curr_user)
+    except IOError:
+        print('文件写入失败')
+
+
+if __name__ == "__main__":
+    # read()
+    # writh('a')
+    # with_def()
+    # buffer_file_def()
+    json_data_def()
+```
+
+## 参考
+
+[HTTP协议入门](http://www.ruanyifeng.com/blog/2016/08/http.html "阮一峰HTTP协议入门")
+
+[聚合数据](https://www.juhe.cn/ "聚合数据")
+
+[阿凡达数据](https://www.avatardata.cn/ "阿凡达数据")
+
+## 结语
+
+> Don't be one of the leeches.
