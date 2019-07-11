@@ -207,6 +207,8 @@ if __name__ == "__main__":
 
 ## 参考
 
+[《总结：Python中的异常处理》](https://segmentfault.com/a/1190000007736783 "思否 - 总结：Python中的异常处理")
+
 [HTTP协议入门](http://www.ruanyifeng.com/blog/2016/08/http.html "阮一峰HTTP协议入门")
 
 [聚合数据](https://www.juhe.cn/ "聚合数据")
