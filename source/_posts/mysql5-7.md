@@ -215,23 +215,23 @@ Unix 时间戳、日期）转换函数
 
 ##### 日期时间计算函数
 
-增加一个时间间隔：date_add(date,INTERVAL expr type)
+增加一个时间间隔：DATE_ADD(date,INTERVAL expr type)
 
 + date 要操作的时间
 + expr 要添加的时间间隔
 + type 参考下表
 
-type的值|
-|:----------:|
+type的值|备注
+:----------:|:-------:
 MICROSECOND|
-SECOND|
-MINUTE|
-HOUR|
-DAY|
-WEEK|
-MONTH|
-QUARTER|
-YEAR|
+SECOND|秒
+MINUTE|分
+HOUR|小时
+DAY|天
+WEEK|星期
+MONTH|月
+QUARTER|?
+YEAR|年
 SECOND_MICROSECOND|
 MINUTE_MICROSECOND|
 MINUTE_SECOND|
