@@ -1,0 +1,1 @@
+docker run -d -p 4000:4000 --rm -v ~/myWorkspace/myproject/myblog/source:/app/source --name myblog myblog
