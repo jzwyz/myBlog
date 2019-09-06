@@ -215,13 +215,40 @@ Unix 时间戳、日期）转换函数
 
 ##### 日期时间计算函数
 
-增加一个时间间隔：date_add()
+增加一个时间间隔：date_add(date,INTERVAL expr type)
+
++ date 要操作的时间
++ expr 要添加的时间间隔
++ type 参考下表
+
+type的值|
+|:----------:|
+MICROSECOND|
+SECOND|
+MINUTE|
+HOUR|
+DAY|
+WEEK|
+MONTH|
+QUARTER|
+YEAR|
+SECOND_MICROSECOND|
+MINUTE_MICROSECOND|
+MINUTE_SECOND|
+HOUR_MICROSECOND|
+HOUR_SECOND|
+HOUR_MINUTE|
+DAY_MICROSECOND|
+DAY_SECOND|
+DAY_MINUTE|
+DAY_HOUR|
+YEAR_MONTH|
 
 > adddate(), addtime()函数，可以用 date_add() 来替代
 
-日期减去一个时间间隔：date_sub()
+日期减去一个时间间隔：DATE_SUB(date,INTERVAL expr type)
 
-> date_sub() 日期时间函数 和 date_add() 用法一致
+> DATE_SUB(date,INTERVAL expr type) 日期时间函数 和 date_add() 用法一致
 
 日期、时间相减函数：datediff(date1,date2), timediff(time1,time2)
 
