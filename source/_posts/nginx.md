@@ -236,7 +236,11 @@ http
 }
 ```
 
-...
+### 使用记录
+
+#### nginx热更新
+
+在docker中,实现nginx热更新 `docker exec -i [nginx容器名/id] nginx -s reload`
 
 ### nginx 日志配置
 
