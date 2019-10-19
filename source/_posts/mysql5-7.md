@@ -7,6 +7,11 @@ tags: 数据库
 这篇文章主要是我日常使用mysql的一些记录
 我使用的mysql版本是:`5.7`
 
+## MySQL 相关文章
+
+[【链接】大牛总结的MySQL锁优化，写得太好了！](https://cloud.tencent.com/developer/news/456119)
+[【链接】一篇文章弄懂MySQL的事务隔离级别](https://mp.weixin.qq.com/s/p32Tc6XhbHq_NbJWAiZnhQ)
+
 ## 用户
 
 ### 创建用户
