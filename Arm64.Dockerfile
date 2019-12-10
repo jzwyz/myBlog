@@ -1,5 +1,5 @@
-# 将官方 arm64v8/node:9.3.0-alpine 运行时用作父镜像
-FROM arm64v8/node:10.17.0-alpine3.9
+# 将官方 arm64v8/node:10.17.0-alpine 运行时用作父镜像
+FROM arm64v8/node:10.17.0-alpine
 
 RUN mkdir -p /app
 
