@@ -125,9 +125,25 @@ docker rmi <镜像hashid/镜像名称> # 删除镜像, 必须注意的是, 先�
 推送镜像到仓库
 
 1. 登陆docker仓库 `docker login ...`
-2. 给镜像打标签 `docker tag local-image:tagname reponame:tagname`
-3. 推送到镜像仓库 `docker push username/repository:tag`
-4. 尝试拉取镜像 `docker pull username/repository:tag`
+2. 给镜像打标签 `docker tag [本地镜像名称]:[版本号] [存储库名称]:[版本号]`
+3. 推送到镜像仓库 `docker push [账号名]/[存储库名称]:[版本号]`
+4. 尝试拉取镜像 `docker pull [账号名]/[存储库名称]:[版本号]`
+
+案例
+
+```sh
+# 登陆dockerhub
+docker login
+
+# 构建镜像
+docker build -t myblog:latest .
+
+# 将本地镜像打标签
+docker tag arm64v8/myblog:latest jiangzwyz/myblog:latest
+
+# 推送到镜像仓库
+docker push jiangzwyz/myblog:latest
+```
 
 ### 服务Swarms
 
