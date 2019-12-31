@@ -118,6 +118,7 @@ docker ps -a; # 查看所有的容器
 docker logs <镜像hashid/镜像名称> # 查看指定容器的日记
 docker start <容器hashid/容器名称> # 启动容器
 docker stop <容器hashid/容器名称> # 停止容器
+docker stop -f <镜像hashid/镜像名称> # 停止容器, 同时删除容器
 docker rm <容器hashid/容器名称>... # 删除容器, 可以同时指定多个 <容器hashid/容器名称>
 docker rmi <镜像hashid/镜像名称> # 删除镜像, 必须注意的是, 先删除容器才能删除镜像
 ```
@@ -136,7 +137,7 @@ docker rmi <镜像hashid/镜像名称> # 删除镜像, 必须注意的是, 先�
 docker login
 
 # 构建镜像
-docker build -t myblog:latest .
+docker build -t arm64v8/myblog:latest .
 
 # 将本地镜像打标签
 docker tag arm64v8/myblog:latest jiangzwyz/myblog:latest
