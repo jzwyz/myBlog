@@ -15,13 +15,13 @@ RUN cp /app/temp/package.json /app/package.json \
     && cp -r /app/temp/source /app/source \
     && cp /app/temp/_config.yml /app/_config.yml \
     && rm -rf /app/temp
-RUN npm i -g hexo-cli --registry=https://registry.npm.taobao.org
 
 # 运行
 FROM arm64v8/node:10.17.0-alpine
 # 创建工作区
 WORKDIR /app
 COPY --from=builder /app .
+RUN npm i -g hexo-cli --registry=https://registry.npm.taobao.org
 # 开放端口、启动项目
 EXPOSE 4000
 # 在容器启动时运行
