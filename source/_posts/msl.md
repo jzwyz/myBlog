@@ -178,6 +178,21 @@ vim编辑器的常用命令:
 
 查看 `/etc/passwd` 文件中 对应你的用户配置 是否是 指定 `/bin/zsh`
 
+##### 最终解决问题的办法
+
+编辑 `~/.bash_profile` 文件，（不存在就创建）
+
+加入以下类容：
+
+```sh
+# 指定 zsh的目录
+export SHELL=/bin/zsh
+export PATH=$SHELL:$PATH
+
+# 每次打开终端的时候运行zsh
+exec $SHELL
+```
+
 ![ ](./WX20200108-173321@2x.png)
 
 执行 `sudo chsh -s /usr/bin/zsh <username>` 命令 (最后面对应你的用户名)
