@@ -1,5 +1,5 @@
 # 将官方 node:9.3.0-alpine 运行时用作父镜像
-FROM node:9.3.0-alpine
+FROM node:10.15.0-alpine
 
 RUN mkdir -p /app
 
