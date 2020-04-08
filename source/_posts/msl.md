@@ -53,6 +53,7 @@ Windows10出了一款子系统Linux,可以方便开发者不在需要依赖虚�
 #### 准备源
 
 查看系统版本
+
 ```sh
 lsb_release -a
 ```
@@ -177,6 +178,21 @@ vim编辑器的常用命令:
 终端应该输出: `/bin/zsh`, 如果不是 或者是 空 则说明默认配置是失败的
 
 查看 `/etc/passwd` 文件中 对应你的用户配置 是否是 指定 `/bin/zsh`
+
+##### 最终解决问题的办法
+
+编辑 `~/.bash_profile` 文件，（不存在就创建）
+
+加入以下类容：
+
+```sh
+# 指定 zsh的目录
+export SHELL=/bin/zsh
+export PATH=$SHELL:$PATH
+
+# 每次打开终端的时候运行zsh
+exec $SHELL
+```
 
 ![ ](./WX20200108-173321@2x.png)
 
