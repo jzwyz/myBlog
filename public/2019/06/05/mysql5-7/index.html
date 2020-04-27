@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="一个小伙子的个人博客">
+    <meta name="keyword" content="Jason的博客">
+    <link rel="shortcut icon" href="/shmily-blog/img/favicon.ico">
+
+    <title>
+        
+        mysql学习笔记 - Jason的博客 | Jason&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/shmily-blog/css/aircloud.css">
+    <link rel="stylesheet" href="/shmily-blog/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Jason </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/shmily-blog/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jason</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/shmily-blog/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-相关文章"><span class="toc-text">MySQL 相关文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户"><span class="toc-text">用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建用户"><span class="toc-text">创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除用户"><span class="toc-text">删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户权限"><span class="toc-text">用户权限</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#授予权限"><span class="toc-text">授予权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#刷新权限"><span class="toc-text">刷新权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除权限"><span class="toc-text">删除权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查看用户权限"><span class="toc-text">查看用户权限</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库"><span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本语法"><span class="toc-text">基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#类型转换函数"><span class="toc-text">类型转换函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#格式化函数"><span class="toc-text">格式化函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#随机数-rand"><span class="toc-text">随机数 rand()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#时间"><span class="toc-text">时间</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#获取系统时间-now-和-sysdate-这两个函数的区别是-now-在执行前就确认了值-sysdate-在执行时动态确认值"><span class="toc-text">获取系统时间 now() 和 sysdate() 这两个函数的区别是, now()在执行前就确认了值, sysdate()在执行时动态确认值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获得当前时间戳函数：current-timestamp-current-timestamp"><span class="toc-text">获得当前时间戳函数：current_timestamp, current_timestamp()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#日期、时间转换"><span class="toc-text">日期、时间转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#日期时间计算函数"><span class="toc-text">日期时间计算函数</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关链接"><span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结语"><span class="toc-text">结语</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Jason </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        mysql学习笔记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-06-05 17:00:05</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/shmily-blog/tags/#数据库" title="数据库">数据库</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>这篇文章主要是我日常使用mysql的一些记录<br>我使用的mysql版本是:<code>5.7</code></p>
+<h2 id="MySQL-相关文章"><a href="#MySQL-相关文章" class="headerlink" title="MySQL 相关文章"></a>MySQL 相关文章</h2><p><a href="https://cloud.tencent.com/developer/news/456119" target="_blank" rel="noopener">【链接】大牛总结的MySQL锁优化，写得太好了！</a><br><a href="https://mp.weixin.qq.com/s/p32Tc6XhbHq_NbJWAiZnhQ" target="_blank" rel="noopener">【链接】一篇文章弄懂MySQL的事务隔离级别</a></p>
+<h2 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h2><h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user <span class="string">'testuser'</span>@<span class="string">'%'</span> identified by <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
+<p>创建 <code>testuser</code> 用户, 可以在所有主机上登陆使用, 密码为<code>password</code>;</p>
+<ol>
+<li>testuser 是创建的用户名</li>
+<li>% 是主机名,指定哪些主机可以使用改用户<ol>
+<li>%/0.0.0.0 所有主机可以使用</li>
+<li>localhost/127.0.0.1 本机可以使用</li>
+<li>…</li>
+</ol>
+</li>
+<li>password 是创建的用户登陆密码, 如果指定为 <code>identified by &#39;&#39;</code> 则不设置密码</li>
+</ol>
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop user <span class="string">'apollo'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h3><h4 id="授予权限"><a href="#授予权限" class="headerlink" title="授予权限"></a>授予权限</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant all on testdb.* to <span class="string">'testuser'</span>@<span class="string">'%'</span>;</span><br><span class="line">grant select on testdb.* to <span class="string">'testuser'</span>@<span class="string">'%'</span>;</span><br><span class="line">grant insert on testdb.* to <span class="string">'testuser'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
+<p>授予用户<code>testuser</code>在所有主机上使用<code>testdb</code>数据库下<strong>所有表</strong>的权限</p>
+<ul>
+<li>all 代表权限<ul>
+<li>select 查询权限</li>
+<li>insert 插入权限</li>
+<li>delete 删除权限</li>
+<li>update 修改权限</li>
+</ul>
+</li>
+<li>testdb.* 改数据库下的所有表</li>
+<li>‘testuser‘@’%’ 表示<code>testuser</code>在<code>%</code>主机可以使用授予的权限</li>
+</ul>
+<h4 id="刷新权限"><a href="#刷新权限" class="headerlink" title="刷新权限"></a>刷新权限</h4><p><code>flush privileges;</code></p>
+<h4 id="删除权限"><a href="#删除权限" class="headerlink" title="删除权限"></a>删除权限</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REVOKE ALL ON <span class="built_in">test</span>.* FROM <span class="string">'testuser'</span>@<span class="string">'%'</span>;</span><br><span class="line">REVOKE select ON <span class="built_in">test</span>.* FROM <span class="string">'testuser'</span>@<span class="string">'%'</span>;</span><br><span class="line">REVOKE insert ON <span class="built_in">test</span>.* FROM <span class="string">'testuser'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除所有权限</li>
+<li>删除查询权限</li>
+<li>删除插入权限</li>
+</ul>
+<h4 id="查看用户权限"><a href="#查看用户权限" class="headerlink" title="查看用户权限"></a>查看用户权限</h4><p><code>SHOW GRANTS FOR &#39;testuser&#39;@&#39;%&#39;;</code></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><h5 id="类型转换函数"><a href="#类型转换函数" class="headerlink" title="类型转换函数"></a>类型转换函数</h5><p>用于类型转化 CAST()和CONVERT()</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CAST(value as <span class="built_in">type</span>);</span><br><span class="line">CONVERT(value, <span class="built_in">type</span>);</span><br></pre></td></tr></table></figure>
+<p>可以转换的类型是有限制的。这个类型可以是以下值其中的一个：</p>
+<ul>
+<li>二进制，同带binary前缀的效果 : BINARY</li>
+<li>字符型，可带参数 : CHAR()</li>
+<li>日期 : DATE</li>
+<li>时间: TIME</li>
+<li>日期时间型 : DATETIME</li>
+<li>浮点数 : DECIMAL</li>
+<li>整数 : SIGNED</li>
+<li>无符号整数 : UNSIGNED</li>
+</ul>
+<p>示例:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1</span></span><br><span class="line">mysql&gt; SELECT CONVERT(<span class="string">'23'</span>,SIGNED);</span><br><span class="line">+----------------------+</span><br><span class="line">| CONVERT(<span class="string">'23'</span>,SIGNED) |</span><br><span class="line">+----------------------+</span><br><span class="line">|                   23 |</span><br><span class="line">+----------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line">mysql&gt; SELECT CAST(<span class="string">'125e342.83'</span> AS signed);</span><br><span class="line">+------------------------------+</span><br><span class="line">| CAST(<span class="string">'125e342.83'</span> AS signed) |</span><br><span class="line">+------------------------------+</span><br><span class="line">|                          125 |</span><br><span class="line">+------------------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line">mysql&gt; SELECT CAST(<span class="string">'3.35'</span> AS signed);</span><br><span class="line">+------------------------+</span><br><span class="line">| CAST(<span class="string">'3.35'</span> AS signed) |</span><br><span class="line">+------------------------+</span><br><span class="line">|                      3 |</span><br><span class="line">+------------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span></span><br></pre></td></tr></table></figure>
+<h5 id="格式化函数"><a href="#格式化函数" class="headerlink" title="格式化函数"></a>格式化函数</h5><h5 id="随机数-rand"><a href="#随机数-rand" class="headerlink" title="随机数 rand()"></a>随机数 rand()</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rand()</span><br></pre></td></tr></table></figure>
+<h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><h5 id="获取系统时间-now-和-sysdate-这两个函数的区别是-now-在执行前就确认了值-sysdate-在执行时动态确认值"><a href="#获取系统时间-now-和-sysdate-这两个函数的区别是-now-在执行前就确认了值-sysdate-在执行时动态确认值" class="headerlink" title="获取系统时间 now() 和 sysdate() 这两个函数的区别是, now()在执行前就确认了值, sysdate()在执行时动态确认值"></a>获取系统时间 <code>now()</code> 和 <code>sysdate()</code> 这两个函数的区别是, <code>now()</code>在执行前就确认了值, <code>sysdate()</code>在执行时动态确认值</h5><p>例子:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; select now(), sleep(3), now();</span><br><span class="line">&gt; select sysdate(), sleep(3), sysdate();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>感兴趣的可以看一下这两天sql执行的结果</p>
+</blockquote>
+<h5 id="获得当前时间戳函数：current-timestamp-current-timestamp"><a href="#获得当前时间戳函数：current-timestamp-current-timestamp" class="headerlink" title="获得当前时间戳函数：current_timestamp, current_timestamp()"></a>获得当前时间戳函数：current_timestamp, current_timestamp()</h5><p>语法: <code>select current_timestamp, current_timestamp()</code></p>
+<h5 id="日期、时间转换"><a href="#日期、时间转换" class="headerlink" title="日期、时间转换"></a>日期、时间转换</h5><p>时间转换为字符串 date_format(date,format), time_format(time,format)</p>
+<p>时间格式化函数 DATE_FORMAT(date, format)</p>
+<ol>
+<li>date 时间</li>
+<li>format 参数格式有</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%a</td>
+<td style="text-align:center">缩写星期名</td>
+</tr>
+<tr>
+<td style="text-align:center">%b</td>
+<td style="text-align:center">缩写月名</td>
+</tr>
+<tr>
+<td style="text-align:center">%c</td>
+<td style="text-align:center">月，数值</td>
+</tr>
+<tr>
+<td style="text-align:center">%D</td>
+<td style="text-align:center">带有英文前缀的月中的天</td>
+</tr>
+<tr>
+<td style="text-align:center">%d</td>
+<td style="text-align:center">月的天，数值(00-31)</td>
+</tr>
+<tr>
+<td style="text-align:center">%e</td>
+<td style="text-align:center">月的天，数值(0-31)</td>
+</tr>
+<tr>
+<td style="text-align:center">%f</td>
+<td style="text-align:center">微秒</td>
+</tr>
+<tr>
+<td style="text-align:center">%H</td>
+<td style="text-align:center">小时 (00-23)</td>
+</tr>
+<tr>
+<td style="text-align:center">%h</td>
+<td style="text-align:center">小时 (01-12)</td>
+</tr>
+<tr>
+<td style="text-align:center">%I</td>
+<td style="text-align:center">小时 (01-12)</td>
+</tr>
+<tr>
+<td style="text-align:center">%i</td>
+<td style="text-align:center">分钟，数值(00-59)</td>
+</tr>
+<tr>
+<td style="text-align:center">%j</td>
+<td style="text-align:center">年的天 (001-366)</td>
+</tr>
+<tr>
+<td style="text-align:center">%k</td>
+<td style="text-align:center">小时 (0-23)</td>
+</tr>
+<tr>
+<td style="text-align:center">%l</td>
+<td style="text-align:center">小时 (1-12)</td>
+</tr>
+<tr>
+<td style="text-align:center">%M</td>
+<td style="text-align:center">月名</td>
+</tr>
+<tr>
+<td style="text-align:center">%m</td>
+<td style="text-align:center">月，数值(00-12)</td>
+</tr>
+<tr>
+<td style="text-align:center">%p</td>
+<td style="text-align:center">AM 或 PM</td>
+</tr>
+<tr>
+<td style="text-align:center">%r</td>
+<td style="text-align:center">时间，12-小时（hh:mm:ss AM 或 PM）</td>
+</tr>
+<tr>
+<td style="text-align:center">%S</td>
+<td style="text-align:center">秒(00-59)</td>
+</tr>
+<tr>
+<td style="text-align:center">%s</td>
+<td style="text-align:center">秒(00-59)</td>
+</tr>
+<tr>
+<td style="text-align:center">%T</td>
+<td style="text-align:center">时间, 24-小时 (hh:mm:ss)</td>
+</tr>
+<tr>
+<td style="text-align:center">%U</td>
+<td style="text-align:center">周 (00-53) 星期日是一周的第一天</td>
+</tr>
+<tr>
+<td style="text-align:center">%u</td>
+<td style="text-align:center">周 (00-53) 星期一是一周的第一天</td>
+</tr>
+<tr>
+<td style="text-align:center">%V</td>
+<td style="text-align:center">周 (01-53) 星期日是一周的第一天，与 %X 使用</td>
+</tr>
+<tr>
+<td style="text-align:center">%v</td>
+<td style="text-align:center">周 (01-53) 星期一是一周的第一天，与 %x 使用</td>
+</tr>
+<tr>
+<td style="text-align:center">%W</td>
+<td style="text-align:center">星期名</td>
+</tr>
+<tr>
+<td style="text-align:center">%w</td>
+<td style="text-align:center">周的天 （0=星期日, 6=星期六）</td>
+</tr>
+<tr>
+<td style="text-align:center">%X</td>
+<td style="text-align:center">年，其中的星期日是周的第一天，4 位，与 %V 使用</td>
+</tr>
+<tr>
+<td style="text-align:center">%x</td>
+<td style="text-align:center">年，其中的星期一是周的第一天，4 位，与 %v 使用</td>
+</tr>
+<tr>
+<td style="text-align:center">%Y</td>
+<td style="text-align:center">年，4 位</td>
+</tr>
+<tr>
+<td style="text-align:center">%y</td>
+<td style="text-align:center">年，2 位</td>
+</tr>
+</tbody>
+</table>
+<p>字符串转换为时间 str_to_date(str, format)</p>
+<p>(日期、天数）转换函数：to_days(date), from_days(days)</p>
+<p>(时间、秒）转换函数：time_to_sec(time), sec_to_time(seconds)</p>
+<p>拼凑日期、时间函数：makdedate(year,dayofyear), maketime(hour,minute,second)</p>
+<p>Unix 时间戳、日期）转换函数</p>
+<ol>
+<li>unix_timestamp(),</li>
+<li>unix_timestamp(date),</li>
+<li>from_unixtime(unix_timestamp),</li>
+<li>from_unixtime(unix_timestamp,format)<ol>
+<li>格式化函数 FROM_UNIXTIME(unix_timestamp, [format])</li>
+<li>unix_timestamp 一般为10位的时间戳，如:1417363200</li>
+<li>format <em>可选</em> 转换之后的时间字符串显示的格式;</li>
+</ol>
+</li>
+</ol>
+<h5 id="日期时间计算函数"><a href="#日期时间计算函数" class="headerlink" title="日期时间计算函数"></a>日期时间计算函数</h5><p>增加一个时间间隔：DATE_ADD(date,INTERVAL expr type)</p>
+<ul>
+<li>date 要操作的时间</li>
+<li>expr 要添加的时间间隔</li>
+<li>type 参考下表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">type的值</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">MICROSECOND</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">SECOND</td>
+<td style="text-align:center">秒</td>
+</tr>
+<tr>
+<td style="text-align:center">MINUTE</td>
+<td style="text-align:center">分</td>
+</tr>
+<tr>
+<td style="text-align:center">HOUR</td>
+<td style="text-align:center">小时</td>
+</tr>
+<tr>
+<td style="text-align:center">DAY</td>
+<td style="text-align:center">天</td>
+</tr>
+<tr>
+<td style="text-align:center">WEEK</td>
+<td style="text-align:center">星期</td>
+</tr>
+<tr>
+<td style="text-align:center">MONTH</td>
+<td style="text-align:center">月</td>
+</tr>
+<tr>
+<td style="text-align:center">QUARTER</td>
+<td style="text-align:center">?</td>
+</tr>
+<tr>
+<td style="text-align:center">YEAR</td>
+<td style="text-align:center">年</td>
+</tr>
+<tr>
+<td style="text-align:center">SECOND_MICROSECOND</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">MINUTE_MICROSECOND</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">MINUTE_SECOND</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">HOUR_MICROSECOND</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">HOUR_SECOND</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">HOUR_MINUTE</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">DAY_MICROSECOND</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">DAY_SECOND</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">DAY_MINUTE</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">DAY_HOUR</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">YEAR_MONTH</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>adddate(), addtime()函数，可以用 date_add() 来替代</p>
+</blockquote>
+<p>日期减去一个时间间隔：DATE_SUB(date,INTERVAL expr type)</p>
+<blockquote>
+<p>DATE_SUB(date,INTERVAL expr type) 日期时间函数 和 date_add() 用法一致</p>
+</blockquote>
+<p>日期、时间相减函数：datediff(date1,date2), timediff(time1,time2)</p>
+<ol>
+<li>datediff 返回天数差距</li>
+<li>timediff 返回time差距</li>
+</ol>
+<blockquote>
+<p>注意：timediff(time1,time2) 函数的两个参数类型必须相同。</p>
+</blockquote>
+<p>时间戳（timestamp）转换、增、减函数</p>
+<ol>
+<li>timestamp(date) – date to timestamp</li>
+<li>timestamp(dt,time) – dt + time</li>
+<li>timestampadd(unit,interval,datetime_expr) –</li>
+<li>timestampdiff(unit,datetime_expr1,datetime_expr2) –</li>
+</ol>
+<p>示例:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">select timestamp(<span class="string">'2008-08-08'</span>); -- 2008-08-08 00:00:00</span><br><span class="line">select timestamp(<span class="string">'2008-08-08 08:00:00'</span>, <span class="string">'01:01:01'</span>); -- 2008-08-08 09:01:01</span><br><span class="line">select timestamp(<span class="string">'2008-08-08 08:00:00'</span>, <span class="string">'10 01:01:01'</span>); -- 2008-08-18 09:01:01</span><br><span class="line"></span><br><span class="line">select timestampadd(day, 1, <span class="string">'2008-08-08 08:00:00'</span>); -- 2008-08-09 08:00:00</span><br><span class="line">select date_add(<span class="string">'2008-08-08 08:00:00'</span>, interval 1 day); -- 2008-08-09 08:00:00</span><br><span class="line"></span><br><span class="line">timestampadd() 函数类似于 date_add()。</span><br><span class="line">select timestampdiff(year,<span class="string">'2002-05-01'</span>,<span class="string">'2001-01-01'</span>); -- -1</span><br><span class="line">select timestampdiff(day ,<span class="string">'2002-05-01'</span>,<span class="string">'2001-01-01'</span>); -- -485</span><br><span class="line">select timestampdiff(hour,<span class="string">'2008-08-08 12:00:00'</span>,<span class="string">'2008-08-08 00:00:00'</span>); -- -12</span><br><span class="line"></span><br><span class="line">select datediff(<span class="string">'2008-08-08 12:00:00'</span>, <span class="string">'2008-08-01 00:00:00'</span>); -- 7</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>timestampdiff() 函数就比 datediff() 功能强多了，datediff() 只能计算两个日期（date）之间相差的天数。</p>
+</blockquote>
+<p>时区（timezone）转换函数</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">convert_tz(dt,from_tz,to_tz)</span><br><span class="line"></span><br><span class="line">select convert_tz(<span class="string">'2008-08-08 12:00:00'</span>, <span class="string">'+08:00'</span>, <span class="string">'+00:00'</span>); -- 2008-08-08 04:00:00</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>时区转换也可以通过 date_add, date_sub, timestampadd 来实现</p>
+</blockquote>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a href="https://www.cnblogs.com/chenqionghe/p/4675844.html" target="_blank" rel="noopener">MySQL CAST与CONVERT 函数的用法</a></p>
+<p><a href="https://www.cnblogs.com/dest/p/4205371.html" target="_blank" rel="noopener">MySQL 日期格式</a></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>每天都要去折腾才能进步</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://wangchujiang.com/linux-command/">Linux 命令搜索</a></span>
+        <span>/</span>
+        
+        <span><a href="https://msdn.itellyou.cn/">MSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/shmily-blog/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/shmily-blog/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80Mzg5My8yMDQyOA==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>

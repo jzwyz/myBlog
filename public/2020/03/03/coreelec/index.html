@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="一个小伙子的个人博客">
+    <meta name="keyword" content="Jason的博客">
+    <link rel="shortcut icon" href="/shmily-blog/img/favicon.ico">
+
+    <title>
+        
+        N1安装CoreELEC并安装Docker、Zerotier - Jason的博客 | Jason&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/shmily-blog/css/aircloud.css">
+    <link rel="stylesheet" href="/shmily-blog/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Jason </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/shmily-blog/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jason</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/shmily-blog/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装CoreELEC"><span class="toc-text">安装CoreELEC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker"><span class="toc-text">安装Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-Portainer-工具管理-Docker"><span class="toc-text">使用 Portainer 工具管理 Docker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Zerotier"><span class="toc-text">安装Zerotier</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-ent"><span class="toc-text">安装 ent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zerotier-开机自启动"><span class="toc-text">zerotier 开机自启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Jason </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        N1安装CoreELEC并安装Docker、Zerotier
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-03-03 20:37:35</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/shmily-blog/tags/#coreelec N1" title="coreelec N1">coreelec N1</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>N1安装CoreELEC并安装Docker、Zerotier， 并设置Zerotier开机自启</p>
+<h2 id="安装CoreELEC"><a href="#安装CoreELEC" class="headerlink" title="安装CoreELEC"></a>安装CoreELEC</h2><p><a href="https://www.right.com.cn/forum/thread-1135262-1-1.html" target="_blank" rel="noopener">传送门</a></p>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p>直接再CoreELEC的插件库 服务插件中安装即可</p>
+<h3 id="使用-Portainer-工具管理-Docker"><a href="#使用-Portainer-工具管理-Docker" class="headerlink" title="使用 Portainer 工具管理 Docker"></a>使用 Portainer 工具管理 Docker</h3><p>在开发环境下使用此方式合适， 生产环境<strong>不建议</strong></p>
+<ol>
+<li>开启docker api</li>
+<li>设置docker镜像源为国内源，（提高下载镜像的速度）</li>
+</ol>
+<p>修改启动文件</p>
+<p><code>vi /storage/.kodi/addons/service.system.docker/system.d/service.system.docker.service</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Docker Application Container Engine</span><br><span class="line">Documentation=https://docs.docker.com</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line">Environment=PATH=/bin:/sbin:/usr/bin:/usr/sbin:/storage/.kodi/addons/service.sys                                      tem.docker/bin</span><br><span class="line">ExecStartPre=/storage/.kodi/addons/service.system.docker/bin/docker-config</span><br><span class="line">EnvironmentFile=-/storage/.kodi/userdata/addon_data/service.system.docker/config                                      /docker.conf</span><br><span class="line">ExecStart=/storage/.kodi/addons/service.system.docker/bin/dockerd -H tcp://0.0.0                                      .0:2375 -H unix:///var/run/docker.sock --registry-mirror=https://el2yu6j2.mirror                                      .aliyuncs.com --<span class="built_in">exec</span>-opt native.cgroupdriver=systemd --<span class="built_in">log</span>-driver=journald --gro                                      up=root <span class="variable">$DOCKER_DAEMON_OPTS</span> <span class="variable">$DOCKER_STORAGE_OPTS</span></span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -s HUP <span class="variable">$MAINPID</span></span><br><span class="line">TasksMax=8192</span><br><span class="line">LimitNOFILE=1048576</span><br><span class="line">LimitNPROC=1048576</span><br><span class="line">LimitCORE=infinity</span><br><span class="line">TimeoutStartSec=0</span><br><span class="line">Restart=on-abnormal</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line">Alias=docker.service</span><br></pre></td></tr></table></figure>
+<p><strong>注意 ExecStart 这个参数，我遇到的坑，就是这行命令不能换行</strong></p>
+<p>加上 <code>-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --registry-mirror=https://el2yu6j2.mirror.aliyuncs.com</code></p>
+<p>重新启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl daemon-reload</span><br><span class="line">$ systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -anp |grep 2375</span><br></pre></td></tr></table></figure>
+<p>查看docker是否监听 2375 端口</p>
+<p><img src="./0.png" alt=" "></p>
+<h2 id="安装Zerotier"><a href="#安装Zerotier" class="headerlink" title="安装Zerotier"></a>安装Zerotier</h2><h3 id="安装-ent"><a href="#安装-ent" class="headerlink" title="安装 ent"></a>安装 ent</h3><h3 id="zerotier-开机自启动"><a href="#zerotier-开机自启动" class="headerlink" title="zerotier 开机自启动"></a>zerotier 开机自启动</h3><p>zerotier的服务启动文件 <code>zerotier-one.service</code>, 放在 <code>/storage/.config/system.d/</code> 下面</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=zerotier-one                             <span class="comment"># 服务名称，不重复就🆗</span></span><br><span class="line">After=syslog.target network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/opt/var/lib/zerotier-one/zerotier-one.pid   <span class="comment"># 这里按照你的软件安装目录而定</span></span><br><span class="line">ExecStart=/opt/bin/zerotier-one -d                   <span class="comment"># 这里按照你的软件安装目录而定</span></span><br><span class="line">ExecReload=/bin/<span class="built_in">kill</span> -s HUP <span class="variable">$MAINPID</span></span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -s QUIT <span class="variable">$MAINPID</span></span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>执行命名：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl daemon-reload</span><br><span class="line">$ systemctl restart zerotier-one</span><br><span class="line">$ systemctl <span class="built_in">enable</span> zerotier-one</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://wangchujiang.com/linux-command/">Linux 命令搜索</a></span>
+        <span>/</span>
+        
+        <span><a href="https://msdn.itellyou.cn/">MSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/shmily-blog/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/shmily-blog/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80Mzg5My8yMDQyOA==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>

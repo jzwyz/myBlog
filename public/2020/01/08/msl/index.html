@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="一个小伙子的个人博客">
+    <meta name="keyword" content="Jason的博客">
+    <link rel="shortcut icon" href="/shmily-blog/img/favicon.ico">
+
+    <title>
+        
+        Windows10下的子系统Linux - Jason的博客 | Jason&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/shmily-blog/css/aircloud.css">
+    <link rel="stylesheet" href="/shmily-blog/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Jason </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/shmily-blog/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jason</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/shmily-blog/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Linux系统"><span class="toc-text">安装Linux系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进入Linux系统"><span class="toc-text">进入Linux系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子系统Ubuntu进阶-可选"><span class="toc-text">子系统Ubuntu进阶(可选)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更换-apt-get-安装源-可选、觉得网速好的可以不换"><span class="toc-text">更换 apt-get 安装源(可选、觉得网速好的可以不换)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#准备源"><span class="toc-text">准备源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-etc-apt-sources-list-文件"><span class="toc-text">修改 /etc/apt/sources.list 文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#apt-get-update、-apt-get-upgrade-不要忘记了-不管有没有换源都要执行的"><span class="toc-text">apt-get update、 apt-get upgrade 不要忘记了, 不管有没有换源都要执行的</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zsh"><span class="toc-text">zsh</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-zsh-oh-my-zsh"><span class="toc-text">安装 zsh oh-my-zsh</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#我遇到的windows10子系统的一个问题"><span class="toc-text">我遇到的windows10子系统的一个问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#最终解决问题的办法"><span class="toc-text">最终解决问题的办法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载-oh-my-zsh-美化zsh"><span class="toc-text">下载 oh-my-zsh 美化zsh</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束"><span class="toc-text">结束</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Jason </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Windows10下的子系统Linux
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-01-08 14:41:17</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/shmily-blog/tags/#Windows" title="Windows">Windows</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>Windows10出了一款子系统Linux,可以方便开发者不在需要依赖虚拟机啦</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>首先你得是windows10最新版本的系统</p>
+<p>进入 系统设置 -&gt; 更新和安全 -&gt; 开发者选项 打开</p>
+<p><img src="./WX20200108-154615@2x.png" alt=" "></p>
+<p><img src="./WX20200108-154856@2x.png" alt=" "></p>
+<p>其次是 进入 控制面板-程序和功能-启用或关闭Windows功能下 选择 “适用于Linux的Window之系统”</p>
+<p><img src="./WX20200108-155336@2x.png" alt=" "></p>
+<p>然后<strong>重启系统</strong></p>
+<h2 id="安装Linux系统"><a href="#安装Linux系统" class="headerlink" title="安装Linux系统"></a>安装Linux系统</h2><p>打开Windows10的应用商店, 搜索Linux会得到以下结果, 点击第一个进入</p>
+<p><img src="./A84A183D1145E8245B6A7C8A84FB985F.jpg" alt=" "></p>
+<p><img src="./WX20200108-155928@2x.png" alt=" "></p>
+<p>这里我安装的是第一个 Ubuntu 系统</p>
+<p><img src="./WX20200108-160028@2x.png" alt=" "></p>
+<p>点击安装, 等待安装完成</p>
+<h2 id="进入Linux系统"><a href="#进入Linux系统" class="headerlink" title="进入Linux系统"></a>进入Linux系统</h2><p>安装完成之后, <code>Ctrl + R</code>打开CMD, 输入 <code>bash</code> 就会进入Linux系统了</p>
+<p>根据提示, 设置用户名、密码就好了</p>
+<p><img src="./20180912154639866.png" alt=" "></p>
+<h2 id="子系统Ubuntu进阶-可选"><a href="#子系统Ubuntu进阶-可选" class="headerlink" title="子系统Ubuntu进阶(可选)"></a>子系统Ubuntu进阶(可选)</h2><h3 id="更换-apt-get-安装源-可选、觉得网速好的可以不换"><a href="#更换-apt-get-安装源-可选、觉得网速好的可以不换" class="headerlink" title="更换 apt-get 安装源(可选、觉得网速好的可以不换)"></a>更换 apt-get 安装源(可选、觉得网速好的可以不换)</h3><p>一般新安装的Linux系统都需要更新软件仓库的, 但是Ubuntu的默认仓库源是国外的,更新数据比较慢, 我们可以先更换软件仓库源为国内的(个人一般喜欢用<em>阿里</em>的源)</p>
+<h4 id="准备源"><a href="#准备源" class="headerlink" title="准备源"></a>准备源</h4><p>查看系统版本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+<p><img src="./WX20200108-164517@2x.png" alt=" "></p>
+<blockquote>
+<p>Codename 是你的系统版本代号<br>Ubuntu 12.04 (LTS)代号为precise。<br>Ubuntu 14.04 (LTS)代号为trusty。<br>Ubuntu 15.04 代号为vivid。<br>Ubuntu 15.10 代号为wily。<br>Ubuntu 16.04 (LTS)代号为xenial。<br>Ubuntu 18.04 (LTS)代号为bionic</p>
+</blockquote>
+<p>Ubuntu 18.04 (LTS)代号为bionic 对应阿里云镜像仓库的地址为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/zhangjiahao14/article/details/80554616" target="_blank" rel="noopener">这里最后面说明了,为什么要关注这个系统的版本号</a></p>
+<h3 id="修改-etc-apt-sources-list-文件"><a href="#修改-etc-apt-sources-list-文件" class="headerlink" title="修改 /etc/apt/sources.list 文件"></a>修改 <code>/etc/apt/sources.list</code> 文件</h3><p>我们需要修改 <code>/etc/apt/sources.list</code> 文件</p>
+<p>第一步: 备份 <code>/etc/apt/sources.list</code> 文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>.bak 后缀的文件是linux系统中的备份文件</p>
+</blockquote>
+<p>第二部: 修改 <code>/etc/apt/sources.list</code> 文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<p><img src="./WX20200108-163130@2x.png" alt=" "></p>
+<p>打开之后是这样的</p>
+<p>注释已有的源, 粘贴阿里的镜像地址保存即可</p>
+<p>vim编辑器说明:</p>
+<p>vi编辑器一共有三种模式，分别是命令模式（command mode）<em>默认</em>、插入模式（Insert mode）和底行模式（last line mode）。命令模式下我们只能控制屏幕光标的移动，字符、字或行的删除，移动复制某区段及进入Insert mode下，或者到 last line mode等；插入模式下可以做文字输入，按「ESC」键可回到命令行模式；底行模式下，可以将文件保存或退出vi，也可以设置编辑环境，如寻找字符串、列出行号等。</p>
+<p>vim编辑器的常用命令:</p>
+<ol>
+<li><code>vim /etc/apt/sources.list</code> 打开文件(不存在的文件,在保存时自动创建) 默认(命令模式)</li>
+<li><code>i</code> (插入模式) 在光标前开始插入</li>
+<li><code>a</code> (插入模式) 在光标后开始插入</li>
+<li><code>shift + :</code> (命令模式) 调出vim的命令行, 输入命令(<code>wq</code>保存退出、<code>q!</code>不保存退出、 <code>w</code>仅保存)</li>
+<li><code>d + up键</code> (命令模式) <em>浏览模式下</em> 删除一行</li>
+</ol>
+<h4 id="apt-get-update、-apt-get-upgrade-不要忘记了-不管有没有换源都要执行的"><a href="#apt-get-update、-apt-get-upgrade-不要忘记了-不管有没有换源都要执行的" class="headerlink" title="apt-get update、 apt-get upgrade 不要忘记了, 不管有没有换源都要执行的"></a>apt-get update、 apt-get upgrade 不要忘记了, 不管有没有换源都要执行的</h4><h3 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h3><p><em>zsh</em>是一个终端shell程序,比默认的bash终端好用, 可以搭配<em>oh-my-zsh</em>美化你的命令行</p>
+<p>官网<a href="https://ohmyz.sh/" target="_blank" rel="noopener">oh-my-zsh</a></p>
+<h4 id="安装-zsh-oh-my-zsh"><a href="#安装-zsh-oh-my-zsh" class="headerlink" title="安装 zsh oh-my-zsh"></a>安装 zsh oh-my-zsh</h4><p>安装zsh</p>
+<p><code>sudo apt-get install zsh</code></p>
+<p>检查zsh</p>
+<p><code>zsh --version</code></p>
+<p>如果没有看到版本号、或者报错,则说明安装失败了</p>
+<p>设置为默认终端</p>
+<p><code>sudo chsh -s /usr/bin/zsh &lt;username&gt;</code></p>
+<p>如果报错, 则看一下 <code>/etc/shells</code> 文件中是否包含 <code>/bin/zsh</code>、<code>/usr/bin/zsh</code>, 没有就添加</p>
+<p><img src="./WX20200108-173249@2x.png" alt=" "></p>
+<p>顺序不重要</p>
+<p>再次执行 <code>sudo chsh -s /usr/bin/zsh &lt;username&gt;</code></p>
+<p>成功则<strong>关闭终端,重新打开(退出用户,重新登陆)</strong></p>
+<p>执行 <code>bash</code> 进入Linux子系统</p>
+<p>执行 <code>echo $SHELL</code> 会输出 <code>/bin/zsh</code></p>
+<p>执行 <code>$SHELL --version</code> 会输出 <code>zsh 5.4.2 (x86_64-ubuntu-linux-gnu)</code></p>
+<p>上面两部执行正确,则说明安装zsh并设置为默认终端成功了,</p>
+<h4 id="我遇到的windows10子系统的一个问题"><a href="#我遇到的windows10子系统的一个问题" class="headerlink" title="我遇到的windows10子系统的一个问题"></a>我遇到的windows10子系统的一个问题</h4><p>在设置为默认终端时,为参考官方教程来做,无法将zsh设置为默认终端</p>
+<p>官方命令: <code>sudo chsh -s $(which zsh)</code></p>
+<p>检查是否设置默认成功: <code>echo $SHELL</code></p>
+<p>终端应该输出: <code>/bin/zsh</code>, 如果不是 或者是 空 则说明默认配置是失败的</p>
+<p>查看 <code>/etc/passwd</code> 文件中 对应你的用户配置 是否是 指定 <code>/bin/zsh</code></p>
+<h5 id="最终解决问题的办法"><a href="#最终解决问题的办法" class="headerlink" title="最终解决问题的办法"></a>最终解决问题的办法</h5><p>编辑 <code>~/.bash_profile</code> 文件，（不存在就创建）</p>
+<p>加入以下类容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定 zsh的目录</span></span><br><span class="line"><span class="built_in">export</span> SHELL=/bin/zsh</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$SHELL</span>:<span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 每次打开终端的时候运行zsh</span></span><br><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span></span><br></pre></td></tr></table></figure>
+<p><img src="./WX20200108-173321@2x.png" alt=" "></p>
+<p>执行 <code>sudo chsh -s /usr/bin/zsh &lt;username&gt;</code> 命令 (最后面对应你的用户名)</p>
+<h4 id="下载-oh-my-zsh-美化zsh"><a href="#下载-oh-my-zsh-美化zsh" class="headerlink" title="下载 oh-my-zsh 美化zsh"></a>下载 oh-my-zsh 美化zsh</h4><p>参考官方的教程</p>
+<p>使用 curl</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>使用 wget</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>默认是 robbyrussell 样式</p>
+<p>修改 <code>~/.zshrc</code> 的 <code>ZSH_THEME=robbyrussell</code> 值 即可更换样式, 如果你不想要任何样式,则将值设置为””即可</p>
+<p><a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes" target="_blank" rel="noopener">主题库</a></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>后面需要学习的:</p>
+<ol>
+<li>安装docker</li>
+<li>putty远程连接</li>
+</ol>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>…</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://wangchujiang.com/linux-command/">Linux 命令搜索</a></span>
+        <span>/</span>
+        
+        <span><a href="https://msdn.itellyou.cn/">MSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/shmily-blog/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/shmily-blog/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80Mzg5My8yMDQyOA==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>

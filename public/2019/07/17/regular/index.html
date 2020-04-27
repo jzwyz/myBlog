@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="一个小伙子的个人博客">
+    <meta name="keyword" content="Jason的博客">
+    <link rel="shortcut icon" href="/shmily-blog/img/favicon.ico">
+
+    <title>
+        
+        正则表达式 - Jason的博客 | Jason&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/shmily-blog/css/aircloud.css">
+    <link rel="stylesheet" href="/shmily-blog/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Jason </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/shmily-blog/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jason</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/shmily-blog/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本"><span class="toc-text">基本</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Jason </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        正则表达式
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-07-17 11:19:25</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>学习正则表达式</p>
+<p><a href="https://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">正则表达式30分钟入门教程</a></p>
+<p><a href="https://github.com/jackfrued/Python-100-Days" target="_blank" rel="noopener">Python - 100天从新手到大师</a></p>
+<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">解释</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:center">匹配任意字符</td>
+<td style="text-align:center">b.t</td>
+<td style="text-align:center">可以匹配bat / but / b#t / b1t等</td>
+</tr>
+<tr>
+<td style="text-align:center">\w</td>
+<td style="text-align:center">匹配字母/数字/下划线</td>
+<td style="text-align:center">b\wt</td>
+<td style="text-align:center">可以匹配bat / b1t / b_t等但不能匹配b#t</td>
+</tr>
+<tr>
+<td style="text-align:center">\s</td>
+<td style="text-align:center">匹配空白字符（包括\r、\n、\t等）</td>
+<td style="text-align:center">love\syou</td>
+<td style="text-align:center">可以匹配love you</td>
+</tr>
+<tr>
+<td style="text-align:center">\d</td>
+<td style="text-align:center">匹配数字</td>
+<td style="text-align:center">\d\d</td>
+<td style="text-align:center">可以匹配01 / 23 / 99等</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td style="text-align:center">匹配单词的边界</td>
+<td style="text-align:center">\bThe\b</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">匹配字符串的开始</td>
+<td style="text-align:center">^The</td>
+<td style="text-align:center">可以匹配The开头的字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:center">匹配字符串的结束</td>
+<td style="text-align:center">.exe$</td>
+<td style="text-align:center">可以匹配.exe结尾的字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">\W</td>
+<td style="text-align:center">匹配非字母/数字/下划线</td>
+<td style="text-align:center">b\Wt</td>
+<td style="text-align:center">可以匹配b#t / b@t等但不能匹配but / b1t / b_t等</td>
+</tr>
+<tr>
+<td style="text-align:center">\S</td>
+<td style="text-align:center">匹配非空白字符</td>
+<td style="text-align:center">love\Syou</td>
+<td style="text-align:center">可以匹配love#you等但不能匹配love you</td>
+</tr>
+<tr>
+<td style="text-align:center">\D</td>
+<td style="text-align:center">匹配非数字</td>
+<td style="text-align:center">\d\D</td>
+<td style="text-align:center">可以匹配9a / 3# / 0F等</td>
+</tr>
+<tr>
+<td style="text-align:center">\B</td>
+<td style="text-align:center">匹配非单词边界</td>
+<td style="text-align:center">\Bio\B</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">[]</td>
+<td style="text-align:center">匹配来自字符集的任意单一字符</td>
+<td style="text-align:center">[aeiou]</td>
+<td style="text-align:center">可以匹配任一元音字母字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[^]</td>
+<td style="text-align:center">匹配不在字符集中的任意单一字符</td>
+<td style="text-align:center">[^aeiou]</td>
+<td style="text-align:center">可以匹配任一非元音字母字符</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">匹配0次或多次</td>
+<td style="text-align:center">\w*</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">匹配1次或多次</td>
+<td style="text-align:center">\w+</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:center">匹配0次或1次</td>
+<td style="text-align:center">\w?</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">{N}</td>
+<td style="text-align:center">匹配N次</td>
+<td style="text-align:center">\w{3}</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">{M,}</td>
+<td style="text-align:center">匹配至少M次</td>
+<td style="text-align:center">\w{3,}</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">{M,N}</td>
+<td style="text-align:center">匹配至少M次至多N次</td>
+<td style="text-align:center">\w{3,6}</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">分支</td>
+<td style="text-align:center">foo</td>
+<td>bar</td>
+<td>可以匹配foo或者bar</td>
+</tr>
+<tr>
+<td style="text-align:center">(?#)</td>
+<td style="text-align:center">注释</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">(exp)</td>
+<td style="text-align:center">匹配exp并捕获到自动命名的组中</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">(?<name>exp)</name></td>
+<td style="text-align:center">匹配exp并捕获到名为name的组中</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">(?:exp)</td>
+<td style="text-align:center">匹配exp但是不捕获匹配的文本</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">(?=exp)</td>
+<td style="text-align:center">匹配exp前面的位置</td>
+<td style="text-align:center">\b\w+(?=ing)</td>
+<td style="text-align:center">可以匹配I’m dancing中的danc</td>
+</tr>
+<tr>
+<td style="text-align:center">(?&lt;=exp)</td>
+<td style="text-align:center">匹配exp后面的位置</td>
+<td style="text-align:center">(?&lt;=\bdanc)\w+\b</td>
+<td style="text-align:center">可以匹配I love dancing and reading中的第一个ing</td>
+</tr>
+<tr>
+<td style="text-align:center">(?!exp)</td>
+<td style="text-align:center">匹配后面不是exp的位置</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">(?&lt;!exp)</td>
+<td style="text-align:center">匹配前面不是exp的位置</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">*?</td>
+<td style="text-align:center">重复任意次，但尽可能少重复</td>
+<td style="text-align:center">a.*b</td>
+</tr>
+<tr>
+<td style="text-align:center">a.*?b</td>
+<td style="text-align:center">将正则表达式应用于aabab，前者会匹配整个字符串aabab，后者会匹配aab和ab两个字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">+?</td>
+<td style="text-align:center">重复1次或多次，但尽可能少重复</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">??</td>
+<td style="text-align:center">重复0次或1次，但尽可能少重复</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">{M,N}?</td>
+<td style="text-align:center">重复M到N次，但尽可能少重复</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">{M,}?</td>
+<td style="text-align:center">重复M次以上，但尽可能少重复</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://wangchujiang.com/linux-command/">Linux 命令搜索</a></span>
+        <span>/</span>
+        
+        <span><a href="https://msdn.itellyou.cn/">MSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/shmily-blog/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/shmily-blog/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80Mzg5My8yMDQyOA==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>

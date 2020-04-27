@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="一个小伙子的个人博客">
+    <meta name="keyword" content="Jason的博客">
+    <link rel="shortcut icon" href="/shmily-blog/img/favicon.ico">
+
+    <title>
+        
+        梅林安装zerotier - Jason的博客 | Jason&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/shmily-blog/css/aircloud.css">
+    <link rel="stylesheet" href="/shmily-blog/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Jason </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/shmily-blog/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jason</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/shmily-blog/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-entware"><span class="toc-text">安装 entware</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置entware环境变量"><span class="toc-text">配置entware环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查entware环境安装情况看是否报错"><span class="toc-text">检查entware环境安装情况看是否报错</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-zerotier"><span class="toc-text">安装 zerotier</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动zerotier服务"><span class="toc-text">启动zerotier服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加端口映射表"><span class="toc-text">添加端口映射表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重启zerotier服务"><span class="toc-text">重启zerotier服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Jason </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        梅林安装zerotier
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-01-02 18:50:50</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/shmily-blog/tags/#路由器" title="路由器">路由器</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>网件R7000刷梅林, 安装zerotier内网穿透工具, 并配置开机自启</p>
+<p><a href="http://koolshare.cn/forum.php?mod=viewthread&amp;tid=134930&amp;extra=&amp;ordertype=1" target="_blank" rel="noopener">参考</a></p>
+<h2 id="安装-entware"><a href="#安装-entware" class="headerlink" title="安装 entware"></a>安装 entware</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /opt</span><br><span class="line"></span><br><span class="line">mkdir /opt</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line"></span><br><span class="line">wget -O - http://qnapware.zyxmon.org/binaries-armv7/installer/entware_install_arm.sh | sh</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>然后会提示你选择哪个分区，选择你挂载的U盘分区</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">···省略</span><br><span class="line">Info:  Looking <span class="keyword">for</span> available partitions...</span><br><span class="line">[1] --&gt; /tmp/mnt/sda1</span><br><span class="line">=&gt;  Please enter partition number or 0 to <span class="built_in">exit</span></span><br><span class="line">[0-1]: 1 <span class="comment"># 选1回车</span></span><br><span class="line">···省略</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>跑完之后只要不提示错误，就是安装成功了</p>
+</blockquote>
+<h3 id="配置entware环境变量"><a href="#配置entware环境变量" class="headerlink" title="配置entware环境变量"></a>配置entware环境变量</h3><p><code>vim /etc/profile</code></p>
+<p>直接在前面/usr/sbin:这行下直接添加下面两行并保存退出（ESC+:wq+Enter）</p>
+<p><code>/opt/bin:/opt/sbin:</code></p>
+<p>使配置生效</p>
+<p><code>source /etc/profile</code></p>
+<h3 id="检查entware环境安装情况看是否报错"><a href="#检查entware环境安装情况看是否报错" class="headerlink" title="检查entware环境安装情况看是否报错"></a>检查entware环境安装情况看是否报错</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line"></span><br><span class="line">opkg list</span><br></pre></td></tr></table></figure>
+<h2 id="安装-zerotier"><a href="#安装-zerotier" class="headerlink" title="安装 zerotier"></a>安装 zerotier</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line"></span><br><span class="line">opkg install zerotier</span><br></pre></td></tr></table></figure>
+<h2 id="启动zerotier服务"><a href="#启动zerotier服务" class="headerlink" title="启动zerotier服务"></a>启动zerotier服务</h2><h2 id="添加端口映射表"><a href="#添加端口映射表" class="headerlink" title="添加端口映射表"></a>添加端口映射表</h2><h2 id="重启zerotier服务"><a href="#重启zerotier服务" class="headerlink" title="重启zerotier服务"></a>重启zerotier服务</h2><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>安装zerotier之前先安装 entware, 这样才能安装最新版本的zerotier</li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>……</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://wangchujiang.com/linux-command/">Linux 命令搜索</a></span>
+        <span>/</span>
+        
+        <span><a href="https://msdn.itellyou.cn/">MSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/shmily-blog/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/shmily-blog/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80Mzg5My8yMDQyOA==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>

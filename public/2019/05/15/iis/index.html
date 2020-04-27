@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="一个小伙子的个人博客">
+    <meta name="keyword" content="Jason的博客">
+    <link rel="shortcut icon" href="/shmily-blog/img/favicon.ico">
+
+    <title>
+        
+        IIS服务器学习 - Jason的博客 | Jason&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/shmily-blog/css/aircloud.css">
+    <link rel="stylesheet" href="/shmily-blog/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Jason </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/shmily-blog/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Jason</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/shmily-blog/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/shmily-blog/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IIS-服务器"><span class="toc-text">IIS 服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置IIS服务"><span class="toc-text">配置IIS服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#管理你的网站"><span class="toc-text">管理你的网站</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#管理界面"><span class="toc-text">管理界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加网站"><span class="toc-text">添加网站</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结语"><span class="toc-text">结语</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Jason </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        IIS服务器学习
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-05-15 16:13:34</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/shmily-blog/tags/#服务器" title="服务器">服务器</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>IIS是Internet Information Services的缩写. 微软公司提供的基于运行Microsoft Windows的互联网基本服务. IIS是一种Web（网页）服务组件，其中包括Web服务器、FTP服务器、NNTP服务器和SMTP服务器，分别用于网页浏览、文件传输、新闻服务和邮件发送等方面，它使得在网络（包括互联网和局域网）上发布信息成了一件很容易的事.</p>
+<h2 id="IIS-服务器"><a href="#IIS-服务器" class="headerlink" title="IIS 服务器"></a>IIS 服务器</h2><p>IIS服务器是Windows自带的一个服务器, 默认是禁用的, 我们需要在 控制面板 -&gt; 程序与应用 中开启这个服务, 然后在管理工具中添加你的网站即可.</p>
+<h2 id="配置IIS服务"><a href="#配置IIS服务" class="headerlink" title="配置IIS服务"></a>配置IIS服务</h2><blockquote>
+<p>我以 windows 10 为例</p>
+</blockquote>
+<p>找到控制面板, 打开<strong>程序和功能</strong>, 点击左侧的<strong>启用和关闭windows功能</strong></p>
+<p><img src="/img/iis_01.png" alt=" "></p>
+<p><img src="/../img/iis_02.png" alt=" "></p>
+<p>如图所示, 勾选 <strong>Internet Information Service</strong> 选项, 会自动帮你选中子选项, 到这里一个简单的iis服务器就算启动了</p>
+<p><img src="/../img/iis_03.png" alt=" "></p>
+<blockquote>
+<p><a href="http://localhost" target="_blank" rel="noopener">浏览器输入(或点击这里)</a>就可以看到以下信息</p>
+</blockquote>
+<p><img src="/../img/iis_04.png" alt=" "></p>
+<h2 id="管理你的网站"><a href="#管理你的网站" class="headerlink" title="管理你的网站"></a>管理你的网站</h2><h3 id="管理界面"><a href="#管理界面" class="headerlink" title="管理界面"></a>管理界面</h3><p>同样的在控制面板, 打开<strong>管理工具</strong>, 找到<strong>Internet Information Service(IIS)管理器</strong></p>
+<p><img src="/../img/iis_05.png" alt=" "></p>
+<p>这个就是你的IIS服务器的管理界面</p>
+<h3 id="添加网站"><a href="#添加网站" class="headerlink" title="添加网站"></a>添加网站</h3><p>右键<strong>服务器</strong>/<strong>网站</strong>选择<strong>添加网站</strong>, 出现如下界面, 填写网站相关信息即可.</p>
+<p><img src="/../img/iis_06.png" alt=" "></p>
+<p>我将本机的一个图片目录部署为一个网站, <em>图片服务器</em></p>
+<ol>
+<li>网站名称, 即你的网站名字.</li>
+<li>应用程序池, 默认即可, 深入的再探讨.</li>
+<li>物理路径, 就是你的项目所在路径</li>
+<li>绑定<ol>
+<li>类型 http/htts, 如果选择为 https 还需要配置证书</li>
+<li>IP地址段, 你可以在你局域网的IP段内自定义, 默认就是本机IP(localhost、127.0.0.1)</li>
+<li>端口不能重复, 这里我配置为 8001</li>
+</ol>
+</li>
+<li>主机名,就是你的域名, 默认不需要修改, 相应的修改需要配置 hosts 文件 (路径”C:\Windows\System32\drivers\etc\hosts”)</li>
+</ol>
+<p>最后一步, 点击确认保存, 你可以看到:</p>
+<p><img src="/../img/iis_07.png" alt=" "></p>
+<p>打开浏览器,输入 <a href="http://localhost:8001/1.jpg" target="_blank" rel="noopener">localhost:8001/1.jpg</a>, 你可以看到:</p>
+<p><img src="/../img/iis_08.png" alt=" "></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>学无止境</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/jzwyz">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://wangchujiang.com/linux-command/">Linux 命令搜索</a></span>
+        <span>/</span>
+        
+        <span><a href="https://msdn.itellyou.cn/">MSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/shmily-blog/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/shmily-blog/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script type="text/javascript">
+       (function() {
+           if (typeof LivereTower === 'function') { return; }
+
+           var j, d = document.getElementById('lv-container');
+
+           d.setAttribute('data-id','city');
+           d.setAttribute('data-uid' , 'MTAyMC80Mzg5My8yMDQyOA==');
+
+           j = document.createElement('script');
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+
+           d.appendChild(j);
+       })();
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+
+</html>

@@ -16,8 +16,8 @@ keyword: "Jason的博客"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://blog.jzwyz.com
-root: /
+url: https://jzwyz.github.io
+root: /shmily-blog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -132,3 +132,7 @@ theme: aircloud
 #  type: git
 #  repo: your repo url
 #  branch: master
+deploy:
+  type: git
+  repo: https://github.com/jzwyz/shmily-hexo-blog
+  branch: gh-pages
