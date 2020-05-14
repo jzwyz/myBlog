@@ -69,6 +69,10 @@ docker run --rm -v /Users/aolei/app/streamsets/sdc-data:/data:rw -v /Users/aolei
 
 执行 `mvn dependency:copy-dependencies -DoutputDirectory=lib -DincludeScope=compile` 会在当前目录下生成**lib**文件夹,复制其中的jar包到`/Users/aolei/app/streamsets/sdc-libs/lib`(*你本地映射的streamsets lib目录*)
 
+## 腾讯云容器部署的小bug
+
+使用腾讯云容器部署的时候,外挂硬盘,容器启动后没有读写权限; 我的解决方案是先用正常启动的容器启动成功,远程登陆`chmod -R 775 /data/`,再切换回streamsets容器即可
+
 ## 总结
 
 [本文借鉴-简书 北邮郭大宝](https://www.jianshu.com/p/870e1bb52da4)
