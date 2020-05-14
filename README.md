@@ -17,3 +17,9 @@ docker run -d -p 4000:4000 --rm -v ~/myWorkspace/myproject/myblog/source:/app/so
 ```bash
 docker run -d --rm -v ~/../workspace/my-blog/source:/app/source --network=app-bridge --name=webblog myblog:1.0
 ```
+
+## github部署
+
+```sh
+hexo deploy
+```
