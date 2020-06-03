@@ -46,6 +46,27 @@ Windows10出了一款子系统Linux,可以方便开发者不在需要依赖虚�
 
 ## 子系统Ubuntu进阶(可选)
 
+### 升级到 WSL2
+
+**先决条件** 运行 `Windows 10`（已更新到版本 *2004* 的内部版本 *19041* 或更高版本）
+
+[官方文档](https://docs.microsoft.com/zh-cn/windows/wsl/install-win10)
+
+打开 cmd
+
+```cmd
+# 将当前wsl版本设置为2  `wsl --set-version <distribution name> <versionNumber>`
+wsl --set-version Ubuntu 18.04 2
+
+# 将wsl默认版本设置为 2  (后续安装wsl子系统都将以wsl2版本安装)
+wsl --set-default-version 2
+
+# 查看当前 wsl 版本
+wsl -l -v
+```
+
+![ ](./WX20200108-164517@2x.png)
+
 ### 更换 apt-get 安装源(可选、觉得网速好的可以不换)
 
 一般新安装的Linux系统都需要更新软件仓库的, 但是Ubuntu的默认仓库源是国外的,更新数据比较慢, 我们可以先更换软件仓库源为国内的(个人一般喜欢用*阿里*的源)
