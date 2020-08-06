@@ -22,6 +22,7 @@ tags: 基础
 * **上手快**,语法简单 只需要记住几个符号就能上手了.
 * Markdwon 有着 易读、易写、易更改 等特点
 * Markdwon 最终是被编译成 HTML 代码执行的
+* Markdwon 支持原生html代码, 如: <span style="color: red; font-size: 18px;">Markdwon 支持原生html代码 (红色 18px 字体)</span>
 
 ### Markdown 的基本语法
 
