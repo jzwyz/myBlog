@@ -1,7 +1,7 @@
 ---
 title: Python3 学习
 date: 2019-07-04 15:16:11
-tags: 编程语言
+tags: Python
 ---
 
 本篇博客学习总结于[Python - 100天从新手到大师](https://github.com/jackfrued/Python-100-Days)
