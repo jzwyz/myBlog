@@ -188,7 +188,7 @@ docker run -d -p 3306:3306 --rm -v /mysql/db:/var/lib/mysql --name mysql mysql;
 
 数据类的容器,官方都会说明其数据文件存放的位置, 当然我们也可以挂载网盘到容器中.
 
-![ ](/../img/docker_01.png)
+![ ](./01.png)
 
 ### 容器网络
 
