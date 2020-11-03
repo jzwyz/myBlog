@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+<html lang="zh" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Python3 学习 - Jason Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="本篇博客学习总结于Python - 100天从新手到大..."> 
+  
+  <meta name="author" content="Jason"> 
+
+  
+    <link rel="icon" href="/img/icons/favicon-16x16.ico" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/img/icons/favicon-32x32.ico" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/img/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/img/icons/favicon-48x48.ico">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_onl0g0h21np.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: 'https://source.unsplash.com/',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">Python3 学习</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071603.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Python3 学习</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>July 04, 2019</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5011</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p>本篇博客学习总结于<a target="_blank" rel="noopener" href="https://github.com/jackfrued/Python-100-Days">Python - 100天从新手到大师</a></p>
+<h2 id="Python是一个“优雅”、“明确”、“简单”的编程语言"><a href="#Python是一个“优雅”、“明确”、“简单”的编程语言" class="headerlink" title="Python是一个“优雅”、“明确”、“简单”的编程语言"></a>Python是一个“优雅”、“明确”、“简单”的编程语言</h2><p>给初学者的建议:</p>
+<ol>
+<li>Make English as your working language.</li>
+<li>Practice makes perfect.</li>
+<li>All experience comes from mistakes.</li>
+<li>Don’t be one of the leeches.</li>
+<li>Either stand out or kicked out.</li>
+</ol>
+<h2 id="Python基础数据类型"><a href="#Python基础数据类型" class="headerlink" title="Python基础数据类型"></a>Python基础数据类型</h2><ol>
+<li>整数</li>
+<li>字符串</li>
+<li>浮点数</li>
+<li>True/False</li>
+<li>None</li>
+</ol>
+<h2 id="Python数据结构"><a href="#Python数据结构" class="headerlink" title="Python数据结构"></a>Python数据结构</h2><ol>
+<li>List（列表）: 数组</li>
+<li>Tuple（元组）: 不可修改列表</li>
+<li>Set（集合）: 同数学中的集合, 不可重复, 可以技术 交集、并集、差集等运算</li>
+<li>Dictionary（字典）: 每一个元素都是由 “键值对” 组成</li>
+</ol>
+<h2 id="字符串格式化代码"><a href="#字符串格式化代码" class="headerlink" title="字符串格式化代码"></a>字符串格式化代码</h2><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%%</td>
+<td align="center">百分号标记</td>
+</tr>
+<tr>
+<td align="center">%c</td>
+<td align="center">字符及其ASCII码</td>
+</tr>
+<tr>
+<td align="center">%s</td>
+<td align="center">字符串</td>
+</tr>
+<tr>
+<td align="center">%d</td>
+<td align="center">有符号整数(十进制)</td>
+</tr>
+<tr>
+<td align="center">%u</td>
+<td align="center">无符号整数(十进制)</td>
+</tr>
+<tr>
+<td align="center">%o</td>
+<td align="center">无符号整数(八进制)</td>
+</tr>
+<tr>
+<td align="center">%x</td>
+<td align="center">无符号整数(十六进制)</td>
+</tr>
+<tr>
+<td align="center">%X</td>
+<td align="center">无符号整数(十六进制大写字符)</td>
+</tr>
+<tr>
+<td align="center">%e</td>
+<td align="center">浮点数字(科学计数法)</td>
+</tr>
+<tr>
+<td align="center">%E</td>
+<td align="center">浮点数字(科学计数法，用E代替e)</td>
+</tr>
+<tr>
+<td align="center">%f</td>
+<td align="center">浮点数字(用小数点符号)</td>
+</tr>
+<tr>
+<td align="center">%g</td>
+<td align="center">浮点数字(根据值的大小采用%e或%f)</td>
+</tr>
+<tr>
+<td align="center">%G</td>
+<td align="center">浮点数字(类似于%g)</td>
+</tr>
+<tr>
+<td align="center">%p</td>
+<td align="center">指针(用十六进制打印值的内存地址)</td>
+</tr>
+<tr>
+<td align="center">%n</td>
+<td align="center">存储输出字符的数量放进参数列表的下一个变量中</td>
+</tr>
+</tbody></table>
+<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">描述</th>
+<th align="center">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">+</td>
+<td align="center">加 - 两个对象相加</td>
+<td align="center">a + b 输出结果 31</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">减 - 得到负数或是一个数减去另一个数</td>
+<td align="center">a - b 输出结果 -11</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">乘 - 两个数相乘或是返回一个被重复若干次的字符串</td>
+<td align="center">a * b 输出结果 210</td>
+</tr>
+<tr>
+<td align="center">/</td>
+<td align="center">除 - x 除以 y</td>
+<td align="center">b / a 输出结果 2.1</td>
+</tr>
+<tr>
+<td align="center">%</td>
+<td align="center">取模 - 返回除法的余数</td>
+<td align="center">b % a 输出结果 1</td>
+</tr>
+<tr>
+<td align="center">**</td>
+<td align="center">幂 - 返回x的y次幂</td>
+<td align="center">a**b 为10的21次方</td>
+</tr>
+<tr>
+<td align="center">//</td>
+<td align="center">取整除 - 向下取接近除数的整数</td>
+<td align="center">9//2 = 4; -9//2 = -5</td>
+</tr>
+</tbody></table>
+<h2 id="特殊运算符"><a href="#特殊运算符" class="headerlink" title="特殊运算符"></a>特殊运算符</h2><table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&amp;</td>
+<td align="center">在set求交集的时候,同set1.intersection(set2)</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td align="center">在set求并集的时候,同set1.union(set2)</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">在set求差集的时候,同set1.difference(set2)</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">在set求对称差的时候,同set1.symmetric_difference(set2)</td>
+</tr>
+</tbody></table>
+<h2 id="文件操作符"><a href="#文件操作符" class="headerlink" title="文件操作符"></a>文件操作符</h2><h3 id="python内置的-open-函数"><a href="#python内置的-open-函数" class="headerlink" title="python内置的 open 函数"></a>python内置的 <code>open</code> 函数</h3><table>
+<thead>
+<tr>
+<th align="center">操作模式</th>
+<th align="center">具体含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">‘r’</td>
+<td align="center">读取 （默认）</td>
+</tr>
+<tr>
+<td align="center">‘w’</td>
+<td align="center">写入（会先截断之前的内容）</td>
+</tr>
+<tr>
+<td align="center">‘x’</td>
+<td align="center">写入，如果文件已经存在会产生异常</td>
+</tr>
+<tr>
+<td align="center">‘a’</td>
+<td align="center">追加，将内容写入到已有文件的末尾</td>
+</tr>
+<tr>
+<td align="center">‘b’</td>
+<td align="center">二进制模式</td>
+</tr>
+<tr>
+<td align="center">‘t’</td>
+<td align="center">文本模式（默认）</td>
+</tr>
+<tr>
+<td align="center">‘+’</td>
+<td align="center">更新（既可以读又可以写）</td>
+</tr>
+</tbody></table>
+<h3 id="python的JSON模块"><a href="#python的JSON模块" class="headerlink" title="python的JSON模块"></a>python的<code>JSON</code>模块</h3><p>常用的四个函数</p>
+<ul>
+<li>dump - 将Python对象按照JSON格式序列化到文件中</li>
+<li>dumps - 将Python对象处理成JSON格式的字符串</li>
+<li>load - 将文件中的JSON数据反序列化成对象</li>
+<li>loads - 将字符串的内容反序列化成Python对象</li>
+</ul>
+<p>这里出现了两个概念，一个叫序列化，一个叫反序列化。自由的百科全书维基百科上对这两个概念是这样解释的：“序列化（serialization）在计算机科学的数据处理中，是指将数据结构或对象状态转换为可以存储或传输的形式，这样在需要的时候能够恢复到原先的状态，而且通过序列化的数据重新获取字节时，可以利用这些字节来产生原始对象的副本（拷贝）。与这个过程相反的动作，即从一系列字节中提取数据结构的操作，就是反序列化（deserialization）”。</p>
+<h3 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/local/bin/python3</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">文件操作和异常处理及JSON数据</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span>():</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;读取文件&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        fs = open(<span class="string">&#x27;a.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        print(fs.read())</span><br><span class="line">    <span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">        print(<span class="string">&#x27;文件不存在&#x27;</span>)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="keyword">if</span> fs:</span><br><span class="line">            fs.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">writh</span>(<span class="params">cmd=<span class="string">&#x27;w&#x27;</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;写文件&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        txt = (x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">600</span>, <span class="number">1000</span>))</span><br><span class="line">        fs = open(<span class="string">&#x27;b.txt&#x27;</span>, cmd, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> txt:</span><br><span class="line">            fs.write(str(t) + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    <span class="keyword">except</span> IOError:</span><br><span class="line">        print(<span class="string">&#x27;IO异常&#x27;</span>)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="keyword">if</span> fs:</span><br><span class="line">            fs.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">with_def</span>():</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    使用with关键字,指定文件对象的上下文环境并在离开上下文环境时自动释放文件资源</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;一次读取所有文件&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">&#x27;a.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f1:</span><br><span class="line">            print(f1.read())</span><br><span class="line"></span><br><span class="line">        <span class="string">&quot;&quot;&quot;使用for-in逐行读取&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">&#x27;a.txt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>, mode=<span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">            <span class="keyword">for</span> line <span class="keyword">in</span> f2:</span><br><span class="line">                print(line, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        print(<span class="string">&#x27;错误&#x27;</span>, Exception)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buffer_file_def</span>():</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;读取二进制文件(拷贝图片)&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;复制文件&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">&#x27;/Users/aolei/Pictures/my images/32916897.jpg&#x27;</span>, mode=<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            data = f.read()</span><br><span class="line">            print(data)</span><br><span class="line"></span><br><span class="line">        <span class="string">&quot;&quot;&quot;粘贴到当前目录下&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">&#x27;head.jpg&#x27;</span>, mode=<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(data)</span><br><span class="line">            print(<span class="string">&#x27;Copy Success&#x27;</span>)</span><br><span class="line">    <span class="keyword">except</span> FileNotFoundError :</span><br><span class="line">        print(<span class="string">&#x27;文件不存在&#x27;</span>)</span><br><span class="line">    <span class="keyword">except</span> UnicodeEncodeError:</span><br><span class="line">        print(<span class="string">&#x27;编码异常&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">json_data_def</span>():</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;python对json数据的处理&quot;&quot;&quot;</span></span><br><span class="line">    myuser = &#123;</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;李黑&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;sex&#x27;</span>: <span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;age&#x27;</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;qq&#x27;</span>: <span class="number">957658</span>,</span><br><span class="line">        <span class="string">&#x27;friends&#x27;</span>: [<span class="string">&#x27;王大锤&#x27;</span>, <span class="string">&#x27;白元芳&#x27;</span>],</span><br><span class="line">        <span class="string">&#x27;cars&#x27;</span>: [</span><br><span class="line">            &#123;<span class="string">&#x27;brand&#x27;</span>: <span class="string">&#x27;BYD&#x27;</span>, <span class="string">&#x27;max_speed&#x27;</span>: <span class="number">180</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;brand&#x27;</span>: <span class="string">&#x27;Audi&#x27;</span>, <span class="string">&#x27;max_speed&#x27;</span>: <span class="number">280</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;brand&#x27;</span>: <span class="string">&#x27;Benz&#x27;</span>, <span class="string">&#x27;max_speed&#x27;</span>: <span class="number">320</span>&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;将python字典对象序列化为json文件&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">&#x27;users.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            json.dump(myuser, f)</span><br><span class="line"></span><br><span class="line">        <span class="string">&quot;&quot;&quot;将json文件反序列化为python字典对象&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">&#x27;users.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            curr_user = json.load(f)</span><br><span class="line">            print(curr_user)</span><br><span class="line">    <span class="keyword">except</span> IOError:</span><br><span class="line">        print(<span class="string">&#x27;文件写入失败&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># read()</span></span><br><span class="line">    <span class="comment"># writh(&#x27;a&#x27;)</span></span><br><span class="line">    <span class="comment"># with_def()</span></span><br><span class="line">    <span class="comment"># buffer_file_def()</span></span><br><span class="line">    json_data_def()</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007736783" title="思否 - 总结：Python中的异常处理">《总结：Python中的异常处理》</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2016/08/http.html" title="阮一峰HTTP协议入门">HTTP协议入门</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.juhe.cn/" title="聚合数据">聚合数据</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.avatardata.cn/" title="阿凡达数据">阿凡达数据</a></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><blockquote>
+<p>Don’t be one of the leeches.</p>
+</blockquote>
+<p><img   class="lazyload" data-original="./1.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt=" "></p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Jason</li>
+  <li><strong>本文链接：</strong><a href="https://jzwyz.github.io/2019/07/04/python3/index.html">https://jzwyz.github.io/2019/07/04/python3/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2019/07/17/regular/"><i class="iconfont iconleft"></i>正则表达式</a>
+  
+  
+    <a href="/2019/06/18/shell/">Shell学习笔记<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "qeJ7YhQ3Yd5SDysepRzx9WAb-9Nh9j0Va",
+        app_key: "nPjHzaeFz8WAQ6E7NlAOPEUj",
+        placeholder: "雁过留痕",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=16620457931 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/jzwyz " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:jiangzwyz@163.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

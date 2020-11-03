@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html lang="zh" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>StreamSets - Jason Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="StreamSets 是我在迁移mysql数据到cli..."> 
+  
+  <meta name="author" content="Jason"> 
+
+  
+    <link rel="icon" href="/img/icons/favicon-16x16.ico" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/img/icons/favicon-32x32.ico" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/img/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/img/icons/favicon-48x48.ico">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_onl0g0h21np.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: 'https://source.unsplash.com/',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">StreamSets</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071603.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">StreamSets</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 03, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2386</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p>StreamSets 是我在迁移mysql数据到clickhouse中发现的, 现在来总结一下</p>
+<p>Streamsets是一款大数据实时采集和ETL工具，可以实现不写一行代码完成数据的采集和流转。通过拖拽式的可视化界面，实现数据管道(Pipelines)的设计和定时任务调度。最大的特点有：</p>
+<ul>
+<li>可视化界面操作，不写代码完成数据的采集和流转</li>
+<li>内置监控，可是实时查看数据流传输的基本信息和数据的质量</li>
+<li>强大的整合力，对现有常用组件全力支持，包括50种数据源、44种数据操作、46种目的地。</li>
+</ul>
+<p>对于Streamsets来说，最重要的概念就是数据源(Origins)、操作(Processors)、目的地(Destinations)。创建一个Pipelines管道配置也基本是这三个方面。</p>
+<p>常见的Origins有Kafka、HTTP、UDP、JDBC、HDFS等；Processors可以实现对每个字段的过滤、更改、编码、聚合等操作；Destinations跟Origins差不多，可以写入Kafka、Flume、JDBC、HDFS、Redis等。</p>
+<h2 id="使用docker创建-StreamSets-实例"><a href="#使用docker创建-StreamSets-实例" class="headerlink" title="使用docker创建 StreamSets 实例"></a>使用docker创建 StreamSets 实例</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -v /Users/aolei/app/streamsets/sdc-data:/data:rw -v /Users/aolei/app/streamsets/sdc-libs/jdbc:/opt/streamsets-datacollector-3.13.0/streamsets-libs-extras/streamsets-datacollector-jdbc-lib/lib/:rw -p 18630:18630 -d streamsets/datacollector dc</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用官方核心包运行"><a href="#使用官方核心包运行" class="headerlink" title="使用官方核心包运行"></a>使用官方核心包运行</h2><p><a target="_blank" rel="noopener" href="https://streamsets.com/">官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://streamsets.com/products/dataops-platform/open-source/">官网下载地址直达</a></p>
+<blockquote>
+<p>下载之前需要填写一些简单的信息</p>
+</blockquote>
+<h3 id="配置很简单"><a href="#配置很简单" class="headerlink" title="配置很简单"></a>配置很简单</h3><p>保存streamsets的配置 <code>-v /Users/aolei/app/streamsets/sdc-data:/data:rw</code></p>
+<p>使用本地的 libs <code>-v /Users/aolei/app/streamsets/sdc-libs/lib:/opt/ streamsets-datacollector-3.13.0/streamsets-libs/:rw</code></p>
+<h2 id="StreamSets-迁移-mysql-clickhouse-使用"><a href="#StreamSets-迁移-mysql-clickhouse-使用" class="headerlink" title="StreamSets 迁移 mysql - clickhouse 使用"></a>StreamSets 迁移 mysql - clickhouse 使用</h2><h3 id="准备所需的jdbc-jar包"><a href="#准备所需的jdbc-jar包" class="headerlink" title="准备所需的jdbc jar包"></a>准备所需的jdbc jar包</h3><p>如果本地有 maven 环境的, 可以创建一个 <code>pom.xml</code> 文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.anjia<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.apache.org<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ru.yandex.clickhouse<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>clickhouse-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1.54<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>mvn dependency:copy-dependencies -DoutputDirectory=lib -DincludeScope=compile</code> 会在当前目录下生成<strong>lib</strong>文件夹,复制其中的jar包到<code>/Users/aolei/app/streamsets/sdc-libs/lib</code>(<em>你本地映射的streamsets lib目录</em>)</p>
+<h2 id="腾讯云容器部署的小bug"><a href="#腾讯云容器部署的小bug" class="headerlink" title="腾讯云容器部署的小bug"></a>腾讯云容器部署的小bug</h2><p>使用腾讯云容器部署的时候,外挂硬盘,容器启动后没有读写权限; 我的解决方案是先用正常启动的容器启动成功,远程登陆<code>chmod -R 775 /data/</code>,再切换回streamsets容器即可</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/870e1bb52da4">本文借鉴-简书 北邮郭大宝</a></p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Jason</li>
+  <li><strong>本文链接：</strong><a href="https://jzwyz.github.io/2020/02/03/streamsets/index.html">https://jzwyz.github.io/2020/02/03/streamsets/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2020/03/03/coreelec/"><i class="iconfont iconleft"></i>N1安装CoreELEC并安装Docker、Zerotier</a>
+  
+  
+    <a href="/2020/01/08/msl/">Windows10下的子系统Linux<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "qeJ7YhQ3Yd5SDysepRzx9WAb-9Nh9j0Va",
+        app_key: "nPjHzaeFz8WAQ6E7NlAOPEUj",
+        placeholder: "雁过留痕",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=16620457931 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/jzwyz " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:jiangzwyz@163.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

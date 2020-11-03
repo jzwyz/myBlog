@@ -1,0 +1,595 @@
+
+
+<!DOCTYPE html>
+<html lang="zh" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>正则表达式 - Jason Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="学习正则表达式
+正则表达式30分钟入门教程
+Pytho..."> 
+  
+  <meta name="author" content="Jason"> 
+
+  
+    <link rel="icon" href="/img/icons/favicon-16x16.ico" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/img/icons/favicon-32x32.ico" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/img/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/img/icons/favicon-48x48.ico">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_onl0g0h21np.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: 'https://source.unsplash.com/',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">正则表达式</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071602.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">正则表达式</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>July 17, 2019</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1179</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p>学习正则表达式</p>
+<p><a target="_blank" rel="noopener" href="https://deerchao.net/tutorials/regex/regex.htm">正则表达式30分钟入门教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jackfrued/Python-100-Days">Python - 100天从新手到大师</a></p>
+<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">解释</th>
+<th align="center">示例</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="center">匹配任意字符</td>
+<td align="center">b.t</td>
+<td align="center">可以匹配bat / but / b#t / b1t等</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="center">匹配字母/数字/下划线</td>
+<td align="center">b\wt</td>
+<td align="center">可以匹配bat / b1t / b_t等但不能匹配b#t</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="center">匹配空白字符（包括\r、\n、\t等）</td>
+<td align="center">love\syou</td>
+<td align="center">可以匹配love you</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center">匹配数字</td>
+<td align="center">\d\d</td>
+<td align="center">可以匹配01 / 23 / 99等</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="center">匹配单词的边界</td>
+<td align="center">\bThe\b</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">匹配字符串的开始</td>
+<td align="center">^The</td>
+<td align="center">可以匹配The开头的字符串</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">匹配字符串的结束</td>
+<td align="center">.exe$</td>
+<td align="center">可以匹配.exe结尾的字符串</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="center">匹配非字母/数字/下划线</td>
+<td align="center">b\Wt</td>
+<td align="center">可以匹配b#t / b@t等但不能匹配but / b1t / b_t等</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="center">匹配非空白字符</td>
+<td align="center">love\Syou</td>
+<td align="center">可以匹配love#you等但不能匹配love you</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="center">匹配非数字</td>
+<td align="center">\d\D</td>
+<td align="center">可以匹配9a / 3# / 0F等</td>
+</tr>
+<tr>
+<td align="center">\B</td>
+<td align="center">匹配非单词边界</td>
+<td align="center">\Bio\B</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">[]</td>
+<td align="center">匹配来自字符集的任意单一字符</td>
+<td align="center">[aeiou]</td>
+<td align="center">可以匹配任一元音字母字符</td>
+</tr>
+<tr>
+<td align="center">[^]</td>
+<td align="center">匹配不在字符集中的任意单一字符</td>
+<td align="center">[^aeiou]</td>
+<td align="center">可以匹配任一非元音字母字符</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">匹配0次或多次</td>
+<td align="center">\w*</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">匹配1次或多次</td>
+<td align="center">\w+</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td align="center">匹配0次或1次</td>
+<td align="center">\w?</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">{N}</td>
+<td align="center">匹配N次</td>
+<td align="center">\w{3}</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">{M,}</td>
+<td align="center">匹配至少M次</td>
+<td align="center">\w{3,}</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">{M,N}</td>
+<td align="center">匹配至少M次至多N次</td>
+<td align="center">\w{3,6}</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td align="center">分支</td>
+<td align="center">foo</td>
+<td align="center">bar</td>
+</tr>
+<tr>
+<td align="center">(?#)</td>
+<td align="center">注释</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">(exp)</td>
+<td align="center">匹配exp并捕获到自动命名的组中</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">(?<name>exp)</td>
+<td align="center">匹配exp并捕获到名为name的组中</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">(?:exp)</td>
+<td align="center">匹配exp但是不捕获匹配的文本</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">(?=exp)</td>
+<td align="center">匹配exp前面的位置</td>
+<td align="center">\b\w+(?=ing)</td>
+<td align="center">可以匹配I’m dancing中的danc</td>
+</tr>
+<tr>
+<td align="center">(?&lt;=exp)</td>
+<td align="center">匹配exp后面的位置</td>
+<td align="center">(?&lt;=\bdanc)\w+\b</td>
+<td align="center">可以匹配I love dancing and reading中的第一个ing</td>
+</tr>
+<tr>
+<td align="center">(?!exp)</td>
+<td align="center">匹配后面不是exp的位置</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">(?&lt;!exp)</td>
+<td align="center">匹配前面不是exp的位置</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">*?</td>
+<td align="center">重复任意次，但尽可能少重复</td>
+<td align="center">a.*b</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">a.*?b</td>
+<td align="center">将正则表达式应用于aabab，前者会匹配整个字符串aabab，后者会匹配aab和ab两个字符串</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">+?</td>
+<td align="center">重复1次或多次，但尽可能少重复</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">??</td>
+<td align="center">重复0次或1次，但尽可能少重复</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">{M,N}?</td>
+<td align="center">重复M到N次，但尽可能少重复</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">{M,}?</td>
+<td align="center">重复M次以上，但尽可能少重复</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Jason</li>
+  <li><strong>本文链接：</strong><a href="https://jzwyz.github.io/2019/07/17/regular/index.html">https://jzwyz.github.io/2019/07/17/regular/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+        
+<nav class="nav">
+  
+    <a href="/2019/07/17/cron/"><i class="iconfont iconleft"></i>cron表达式</a>
+  
+  
+    <a href="/2019/07/04/python3/">Python3 学习<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "qeJ7YhQ3Yd5SDysepRzx9WAb-9Nh9j0Va",
+        app_key: "nPjHzaeFz8WAQ6E7NlAOPEUj",
+        placeholder: "雁过留痕",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=16620457931 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/jzwyz " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:jiangzwyz@163.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

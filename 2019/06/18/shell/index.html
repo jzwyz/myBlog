@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<html lang="zh" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Shell学习笔记 - Jason Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="Shell 是一个用 C 语言编写的程序，它是用户使用..."> 
+  
+  <meta name="author" content="Jason"> 
+
+  
+    <link rel="icon" href="/img/icons/favicon-16x16.ico" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/img/icons/favicon-32x32.ico" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/img/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/img/icons/favicon-48x48.ico">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_onl0g0h21np.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: 'https://source.unsplash.com/',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">Shell学习笔记</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://pic.izhaoo.com/2017072104.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Shell学习笔记</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>June 18, 2019</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1478</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p>Shell 是一个用 C 语言编写的程序，它是用户使用 Linux 的桥梁</p>
+<p>Shell 编程跟 java、php 编程一样，只要有一个能编写代码¸的文本编辑器和一个能解释执行的脚本解释器就可以了。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="创建脚本文件"><a href="#创建脚本文件" class="headerlink" title="创建脚本文件"></a>创建脚本文件</h3><p>新建一个扩展名为<code>.sh</code>的文件<code>test.sh</code>, sh代表<em>shell</em></p>
+<p>test.sh文件内容如下:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello Shell&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>#!</code> 是一个约定俗成的标记, 用于告诉系统使用哪个解释器来执行这个脚本.<br><code>echo</code> 命令是用于向终端输出文本信息,也可用于向文件中写入数据</p>
+</blockquote>
+<h3 id="运行shell脚本"><a href="#运行shell脚本" class="headerlink" title="运行shell脚本"></a>运行shell脚本</h3><p>运行shell脚本的方式两种</p>
+<ul>
+<li>通过可执行文件运行</li>
+</ul>
+<p>需要给脚本文件添加可执行权限</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 test.sh 文件所在的文件夹下, 执行以下命令</span></span><br><span class="line">chmod +x ./test.sh</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里需要注意的是, 一定要写成<code>./test.sh</code>而不是<code>test.sh</code>, 否责系统可能会找不到脚本文件, <code>./</code>的意思是 指定在当前文件路径下查找文件</p>
+</blockquote>
+<ul>
+<li>作为解释器参数</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/bin/sh test.sh</span><br><span class="line">/bin/php test.php</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这种方式下,在文件第一行添加<em>标记</em>也没有效果(因为你已经指定了解释器来运行脚本)</p>
+</blockquote>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>规则:</p>
+<ol>
+<li>定义变量时，变量名不加美元符号</li>
+<li>变量名和等号之间不能有空格</li>
+<li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。</li>
+<li>中间不能有空格，可以使用下划线（_）。</li>
+<li>不能使用标点符号。</li>
+<li>不能使用bash里的关键字（可用help命令查看保留关键字）。</li>
+</ol>
+<p>示例:</p>
+<p>有效命名:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RUNOOB</span><br><span class="line">LD_LIBRARY_PATH</span><br><span class="line">_var</span><br><span class="line">var2</span><br></pre></td></tr></table></figure>
+
+<p>无效命名:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?var=123</span><br><span class="line">user*name=runoob</span><br></pre></td></tr></table></figure>
+
+<p>显示赋值</p>
+<p><code>your_name=&quot;runoob.com&quot;</code></p>
+<p>通过语句赋值</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> `ls /etc`</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> $(ls /etc)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上语句, 列出<code>/etc</code>路径下的所有文件名,赋值给<code>file</code></p>
+</blockquote>
+<h3 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h3><p>使用变量,只需要在变量前面加一个<code>$</code>符号</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name=<span class="string">&quot;shell&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$name</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;name&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>$name</code>和<code>$&#123;name&#125;</code>都是可以的, <code>&#123;&#125;</code>是可选的, 它的作用是帮助解释器来识别变量边界的, 比如:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> skill <span class="keyword">in</span> Ada Coffe Action Java; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;I am good at <span class="variable">$&#123;skill&#125;</span>Script&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p>如果不加 <code>&#123;&#125;</code> 则解释器认为<code>$skillScript</code>是一个变量(内容为空),</p>
+<blockquote>
+<blockquote>
+<p>推荐给所有的变量加上<code>&#123;&#125;</code>,养成好的编程习惯</p>
+</blockquote>
+</blockquote>
+<h3 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h3><p>已经定义的变量可以被重新赋值, <strong>只读变量</strong>除外</p>
+<p>定义方式为: 在变量前面加上 <code>readonly</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">readonly</span> name=<span class="string">&quot;Shell&quot;</span></span><br><span class="line">name=<span class="string">&quot;jason&quot;</span> <span class="comment"># 这里会报错  error: NAME: This variable is read only.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> name</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>unset 命令不能删除只读变量。 删除之后不能使用</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-shell.html" title="Linux Shell教程">菜鸟教程</a></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>学习一门技术, 开始的时候不要纠结各种看不懂的语法、不钻牛角尖, 先培养兴趣, 再循序渐进.</p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Jason</li>
+  <li><strong>本文链接：</strong><a href="https://jzwyz.github.io/2019/06/18/shell/index.html">https://jzwyz.github.io/2019/06/18/shell/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/" rel="tag">脚本语言</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2019/07/04/python3/"><i class="iconfont iconleft"></i>Python3 学习</a>
+  
+  
+    <a href="/2019/06/05/mysql5-7/">mysql学习笔记<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "qeJ7YhQ3Yd5SDysepRzx9WAb-9Nh9j0Va",
+        app_key: "nPjHzaeFz8WAQ6E7NlAOPEUj",
+        placeholder: "雁过留痕",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=16620457931 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/jzwyz " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:jiangzwyz@163.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

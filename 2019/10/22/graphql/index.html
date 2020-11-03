@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html lang="zh" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GraphQL 学习 - Jason Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="GraphQL 既是一种用于 API 的查询语言也是一..."> 
+  
+  <meta name="author" content="Jason"> 
+
+  
+    <link rel="icon" href="/img/icons/favicon-16x16.ico" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/img/icons/favicon-32x32.ico" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/img/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/img/icons/favicon-48x48.ico">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_onl0g0h21np.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: 'https://source.unsplash.com/',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">GraphQL 学习</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://pic.izhaoo.com/2014031601.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">GraphQL 学习</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 22, 2019</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2263</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p>GraphQL 既是一种用于 API 的查询语言也是一个满足你数据查询的运行时。 GraphQL 对你的 API 中的数据提供了一套易于理解的完整描述，使得客户端能够准确地获得它需要的数据，而且没有任何冗余，也让 API 更容易地随着时间推移而演进，还能用于构建强大的开发者工具。</p>
+<p><a target="_blank" rel="noopener" href="https://www.apollographql.com/docs/apollo-server">官网文档</a></p>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>这里使用 nodejs 来创建demo, 使用到的npm包如下:</p>
+<ol>
+<li>fastify</li>
+<li>apollo-server-fastify</li>
+</ol>
+<h3 id="定义GraphQL-模型"><a href="#定义GraphQL-模型" class="headerlink" title="定义GraphQL 模型"></a>定义GraphQL 模型</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; gql &#125; <span class="keyword">from</span> <span class="string">&#x27;apollo-server-core&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> typeDefs = gql<span class="string">`</span></span><br><span class="line"><span class="string">    # 自定义 类型</span></span><br><span class="line"><span class="string">    scalar Date</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    # 自定义一个模型</span></span><br><span class="line"><span class="string">    type Book &#123;</span></span><br><span class="line"><span class="string">        title: String</span></span><br><span class="line"><span class="string">        author: String</span></span><br><span class="line"><span class="string">        sex: String</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    ...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    # 定义输入模型</span></span><br><span class="line"><span class="string">    input BookForm &#123;</span></span><br><span class="line"><span class="string">        title: String!</span></span><br><span class="line"><span class="string">        author: String!</span></span><br><span class="line"><span class="string">        sex: String!</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    # Query 定义查询的方法</span></span><br><span class="line"><span class="string">    type Query &#123;</span></span><br><span class="line"><span class="string">        # 查询所以 books 的方法</span></span><br><span class="line"><span class="string">        getBooks: [Book]</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    # Mutation 定义更新的方法</span></span><br><span class="line"><span class="string">    type Mutation &#123;</span></span><br><span class="line"><span class="string">        addBook(book: BookForm): Boolean</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>自定义类型用 <code>scalar</code> 标注</li>
+<li>自定义模型用 <code>type</code> 标注</li>
+<li>输入模型用 <code>input</code> 标注 (与模型的唯一区别是 关键字不同)</li>
+</ol>
+<blockquote>
+<p>Query 和 Mutation 是GraphQL内的两个特殊模型, 我们在这里定义 <em>查询</em> 和 <em>更新</em> 及返回类型, typeDefs中只能各存在一个.</p>
+</blockquote>
+<h3 id="定义GraphQL的-resolver"><a href="#定义GraphQL的-resolver" class="headerlink" title="定义GraphQL的 resolver"></a>定义GraphQL的 resolver</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> resolvers = &#123;</span><br><span class="line">    Query: &#123;</span><br><span class="line">        <span class="comment">// Query中实现typeDefs中定义的查询</span></span><br><span class="line">        getBooks: <span class="function">(<span class="params">obj: <span class="built_in">any</span>, args: <span class="built_in">any</span>, context: <span class="built_in">any</span>, info: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> [];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    Mutation: &#123;</span><br><span class="line">        <span class="comment">// Mutation中实现typeDefs中定义的更新</span></span><br><span class="line">        addBook: <span class="function">(<span class="params">obj: <span class="built_in">any</span>, args: <span class="built_in">any</span>, context: <span class="built_in">any</span>, info: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;----&gt; params&#x27;</span>, args[<span class="string">&#x27;book&#x27;</span>])</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 实现typeDefs中自定义的模型</span></span><br><span class="line">    Book: &#123;</span><br><span class="line">        <span class="comment">// 针对 单个属性定义</span></span><br><span class="line">        sex: <span class="function">(<span class="params">book:<span class="built_in">any</span>, args: <span class="built_in">any</span>, context: <span class="built_in">any</span>, info: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> book.sex === <span class="number">1</span> ? <span class="string">&#x27;男&#x27;</span> : <span class="string">&#x27;女&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ... 多个自定义模型</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意: resolver 中 Query和Mutation 只能有一个</p>
+</blockquote>
+<h3 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ApolloServer &#125; <span class="keyword">from</span> <span class="string">&#x27;apollo-server-fastify&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fastify <span class="keyword">from</span> <span class="string">&#x27;fastify&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> gqlserver =  <span class="keyword">new</span> ApolloServer(&#123;</span><br><span class="line">    typeDefs,</span><br><span class="line">    resolvers</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">fast.register(gqlserver.createHandler());</span><br><span class="line"></span><br><span class="line">fast.listen(<span class="number">3000</span>, <span class="string">&#x27;0.0.0.0&#x27;</span>, <span class="keyword">async</span> (err, address) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        fast.log.error(err, address);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.info(<span class="string">`service start success &gt; <span class="subst">$&#123;address&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="http://www.zhaiqianfeng.com/2017/06/learn-graphql-first-demo.html"></a></p>
+<p><a target="_blank" rel="noopener" href="http://www.zhaiqianfeng.com/2017/06/learn-graphql-type-system.html"></a></p>
+<p><a target="_blank" rel="noopener" href="http://www.zhaiqianfeng.com/2017/06/learn-graphql-action-by-javascript.html"></a></p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Jason</li>
+  <li><strong>本文链接：</strong><a href="https://jzwyz.github.io/2019/10/22/graphql/index.html">https://jzwyz.github.io/2019/10/22/graphql/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/" rel="tag">API</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2020/01/02/xgp-zerotier/"><i class="iconfont iconleft"></i>小钢炮安装zerotier实现内网穿透</a>
+  
+  
+    <a href="/2019/10/11/clickhouse/">clickhouse学习笔记<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "qeJ7YhQ3Yd5SDysepRzx9WAb-9Nh9j0Va",
+        app_key: "nPjHzaeFz8WAQ6E7NlAOPEUj",
+        placeholder: "雁过留痕",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=16620457931 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/jzwyz " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:jiangzwyz@163.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

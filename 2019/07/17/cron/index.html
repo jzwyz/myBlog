@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html lang="zh" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>cron表达式 - Jason Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="cron表达式常用于调度任务
+本文摘自:cron表达式..."> 
+  
+  <meta name="author" content="Jason"> 
+
+  
+    <link rel="icon" href="/img/icons/favicon-16x16.ico" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/img/icons/favicon-32x32.ico" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/img/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/img/icons/favicon-48x48.ico">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_onl0g0h21np.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: 'https://source.unsplash.com/',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">cron表达式</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://pic.izhaoo.com/2014031601.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">cron表达式</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>July 17, 2019</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2548</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p>cron表达式常用于调度任务</p>
+<p>本文摘自:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/javahr/p/8318728.html">cron表达式详解</a></p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>corn从左到右（用空格隔开）：秒 分 小时 日期 月份 星期 [年份]</p>
+<h2 id="各字段的含义"><a href="#各字段的含义" class="headerlink" title="各字段的含义"></a>各字段的含义</h2><table>
+<thead>
+<tr>
+<th align="center">字段</th>
+<th align="center">允许值</th>
+<th align="center">允许的特殊字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">秒（Seconds）</td>
+<td align="center">0~59的整数</td>
+<td align="center">, - * /    四个字符</td>
+</tr>
+<tr>
+<td align="center">分（Minutes）</td>
+<td align="center">0~59的整数</td>
+<td align="center">, - * /    四个字符</td>
+</tr>
+<tr>
+<td align="center">小时（Hours）</td>
+<td align="center">0~23的整数</td>
+<td align="center">, - * /    四个字符</td>
+</tr>
+<tr>
+<td align="center">日期（DayofMonth）</td>
+<td align="center">1~31的整数（但是你需要考虑你月的天数）</td>
+<td align="center">,- * ? / L W C     八个字符</td>
+</tr>
+<tr>
+<td align="center">月份（Month）</td>
+<td align="center">1~12的整数或者 JAN-DEC</td>
+<td align="center">, - * /    四个字符</td>
+</tr>
+<tr>
+<td align="center">星期（DayofWeek）</td>
+<td align="center">1~7的整数或者 SUN-SAT （1=SUN）</td>
+<td align="center">, - * ? / L C #     八个字符</td>
+</tr>
+<tr>
+<td align="center">年(可选，留空)（Year）</td>
+<td align="center">1970~2099</td>
+<td align="center">, - * /    四个字符</td>
+</tr>
+</tbody></table>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>每一个域都使用数字，但还可以出现如下特殊字符，它们的含义是:</p>
+<ol>
+<li><em>：表示匹配该域的任意值。假如在Minutes域使用</em>, 即表示每分钟都会触发事件。</li>
+<li>?：只能用在DayofMonth和DayofWeek两个域。它也匹配域的任意值，但实际不会。因为DayofMonth和DayofWeek会相互影响。例如想在每月的20日触发调度，不管20日到底是星期几，则只能使用如下写法： 13 13 15 20 * ?, 其中最后一位只能用？，而不能使用<em>，如果使用</em>表示不管星期几都会触发，实际上并不是这样。</li>
+<li>-：表示范围。例如在Minutes域使用5-20，表示从5分到20分钟每分钟触发一次</li>
+<li>/：表示起始时间开始触发，然后每隔固定时间触发一次。例如在Minutes域使用5/20,则意味着从5分开始每20分钟触发一次</li>
+<li>,：表示列出枚举值。例如：在Minutes域使用5,20，则意味着在5和20分每分钟触发一次。</li>
+<li>L：表示最后，只能出现在DayofWeek和DayofMonth域。如果在DayofWeek域使用5L,意味着在最后的一个星期四触发。</li>
+<li>W:表示有效工作日(周一到周五),只能出现在DayofMonth域，系统将在离指定日期的最近的有效工作日触发事件。例如：在 DayofMonth使用5W，如果5日是星期六，则将在最近的工作日：星期五，即4日触发。如果5日是星期天，则在6日(周一)触发；如果5日在星期一到星期五中的一天，则就在5日触发。另外一点，W的最近寻找不会跨过月份 。</li>
+<li>LW:这两个字符可以连用，表示在某个月最后一个工作日，即最后一个星期五。</li>
+<li>#:用于确定每个月第几个星期几，只能出现在DayofMonth域。例如在4#2，表示某月的第二个星期三。</li>
+</ol>
+<h2 id="常用表达式例子"><a href="#常用表达式例子" class="headerlink" title="常用表达式例子"></a>常用表达式例子</h2><ol>
+<li>0 0 2 1 * ? *   表示在每月的1日的凌晨2点调整任务</li>
+<li>0 15 10 ? * MON-FRI   表示周一到周五每天上午10:15执行作业</li>
+<li>0 15 10 ? 6L 2002-2006   表示2002-2006年的每个月的最后一个星期五上午10:15执行作</li>
+<li>0 0 10,14,16 * * ?   每天上午10点，下午2点，4点</li>
+<li>0 0/30 9-17 * * ?   朝九晚五工作时间内每半小时</li>
+<li>0 0 12 ? * WED    表示每个星期三中午12点</li>
+<li>0 0 12 * * ?   每天中午12点触发</li>
+<li>0 15 10 ? * *    每天上午10:15触发</li>
+<li>0 15 10 * * ?     每天上午10:15触发</li>
+<li>0 15 10 * * ? *    每天上午10:15触发</li>
+<li>0 15 10 * * ? 2005    2005年的每天上午10:15触发</li>
+<li>0 * 14 * * ?     在每天下午2点到下午2:59期间的每1分钟触发</li>
+<li>0 0/5 14 * * ?    在每天下午2点到下午2:55期间的每5分钟触发</li>
+<li>0 0/5 14,18 * * ?     在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发</li>
+<li>0 0-5 14 * * ?    在每天下午2点到下午2:05期间的每1分钟触发</li>
+<li>0 10,44 14 ? 3 WED    每年三月的星期三的下午2:10和2:44触发</li>
+<li>0 15 10 ? * MON-FRI    周一至周五的上午10:15触发</li>
+<li>0 15 10 15 * ?    每月15日上午10:15触发</li>
+<li>0 15 10 L * ?    每月最后一日的上午10:15触发</li>
+<li>0 15 10 ? * 6L    每月的最后一个星期五上午10:15触发</li>
+<li>0 15 10 ? * 6L 2002-2005   2002年至2005年的每月的最后一个星期五上午10:15触发</li>
+<li>0 15 10 ? * 6#3   每月的第三个星期五上午10:15触发</li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>有些子表达式能包含一些范围或列表</p>
+<p>例如：子表达式（天（星期））可以为 “MON-FRI”，“MON，WED，FRI”，“MON-WED,SAT”</p>
+<p>“*”字符代表所有可能的值</p>
+<p>因此，“<em>”在子表达式（月）里表示每个月的含义，“</em>”在子表达式（天（星期））表示星期的每一天</p>
+<p>“/”字符用来指定数值的增量<br>例如：在子表达式（分钟）里的“0/15”表示从第0分钟开始，每15分钟<br>在子表达式（分钟）里的“3/20”表示从第3分钟开始，每20分钟（它和“3，23，43”）的含义一样</p>
+<p>“？”字符仅被用于天（月）和天（星期）两个子表达式，表示不指定值<br>当2个子表达式其中之一被指定了值以后，为了避免冲突，需要将另一个子表达式的值设为“？”</p>
+<p>“L” 字符仅被用于天（月）和天（星期）两个子表达式，它是单词“last”的缩写<br>但是它在两个子表达式里的含义是不同的。<br>在天（月）子表达式中，“L”表示一个月的最后一天<br>在天（星期）自表达式中，“L”表示一个星期的最后一天，也就是SAT</p>
+<p>如果在“L”前有具体的内容，它就具有其他的含义了</p>
+<p>例如：“6L”表示这个月的倒数第６天，“FRIL”表示这个月的最一个星期五<br>注意：在使用“L”参数时，不要指定列表或范围，因为这会导致问题</p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Jason</li>
+  <li><strong>本文链接：</strong><a href="https://jzwyz.github.io/2019/07/17/cron/index.html">https://jzwyz.github.io/2019/07/17/cron/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cron/" rel="tag">cron</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2019/10/11/clickhouse/"><i class="iconfont iconleft"></i>clickhouse学习笔记</a>
+  
+  
+    <a href="/2019/07/17/regular/">正则表达式<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "qeJ7YhQ3Yd5SDysepRzx9WAb-9Nh9j0Va",
+        app_key: "nPjHzaeFz8WAQ6E7NlAOPEUj",
+        placeholder: "雁过留痕",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=16620457931 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/jzwyz " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:jiangzwyz@163.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html>
+<html lang="zh" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jason Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="Jason的个人博客"> 
+  
+  <meta name="author" content="Jason"> 
+
+  
+    <link rel="icon" href="/img/icons/favicon-16x16.ico" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/img/icons/favicon-32x32.ico" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/img/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/img/icons/favicon-48x48.ico">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_onl0g0h21np.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: true,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: 'https://source.unsplash.com/',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  
+    <div class="preview">
+  <nav class="navbar j-navbar-menu">
+    <i class="iconfont iconmenu"></i>
+  </nav>
+  <div class="preview-image">
+    <h2 class="preview-motto" id="motto"></h2>
+    <!-- <span class="preview-cursor">|</span> -->
+    
+    <div class="preview-overlay">
+      <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="preview-parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(var(--color-background-rgb), 0.7" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(var(--color-background-rgb), 0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(var(--color-background-rgb), 0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(var(--color-background-rgb))" />
+        </g>
+      </svg>
+    </div>
+    
+  </div>
+  <div class="preview-scroll">
+    <a href="#container" class="smooth-scroll"><i class="iconfont iconMouse"></i></a>
+  </div>
+</div>
+  
+  <div class="container" id="container">
+    <section class="row post">
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/10/15/serverless/" class="post-image">
+      <img   class="lazyload" data-original="https://pic.izhaoo.com/2014031601.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/10/15/serverless/">云函数（serverless）</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">Serverless，它是云计算发展过程中出现的一种计算资源的抽象，依赖第三方服务，开发者可以更加专注的开发自己的业务代码，而无需关心底层资源的分配、扩容和部署。
+特征
+
+开发者只需要专注于业务...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 15, 2020</span
+          class="post-info-item">
+        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>523</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/08/26/hackintosh/" class="post-image">
+      <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071602.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/08/26/hackintosh/">黑苹果折腾记</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">准备工作我们在开始前需要知道这几个网站, 因为所有资源都来自其中
+黑果小兵的部落阁
+远景论坛
+使用OpenCore引导黑苹果
+我的电脑配置
+
+
+类目
+型号
+
+
+
+处理器
+Intel i7-107...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 26, 2020</span
+          class="post-info-item">
+        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>1944</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/08/24/javascript-event-queue/" class="post-image">
+      <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071603.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/08/24/javascript-event-queue/">了解javascript的执行机制</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">参考《这一次，彻底弄懂 JavaScript 执行机制 - 掘金》参考《一次弄懂Event Loop（彻底解决此类面试问题）- 掘金》参考《2020前端面试必会知识点 - 灰蓝宇墨的文章 - 知...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 24, 2020</span
+          class="post-info-item">
+        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>5072</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/08/06/flutter/" class="post-image">
+      <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071603.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/08/06/flutter/">了解一下Flutter</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">Flutter实战
+Flutter 是 Google推出并开源的移动应用开发框架，主打跨平台、高保真、高性能。开发者可以通过 Dart语言开发 App，一套代码同时运行在 iOS 和 Andro...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 06, 2020</span
+          class="post-info-item">
+        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>1081</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/06/02/electron/" class="post-image">
+      <img   class="lazyload" data-original="https://pic.izhaoo.com/2017072104.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/06/02/electron/">electron 学习笔记</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">Electron 是一个用 HTML，CSS 和 JavaScript 来构建跨平台桌面应用程序的一个开源库
+原理为 Electron 通过将 Chromium 和 Node.js 合并到同一个...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>June 02, 2020</span
+          class="post-info-item">
+        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>408</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/03/03/coreelec/" class="post-image">
+      <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071603.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/03/03/coreelec/">N1安装CoreELEC并安装Docker、Zerotier</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">N1安装CoreELEC并安装Docker、Zerotier， 并设置Zerotier开机自启
+安装CoreELEC传送门
+安装Docker直接再CoreELEC的插件库 服务插件中安装即可
+使...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 03, 2020</span
+          class="post-info-item">
+        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>2270</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/02/03/streamsets/" class="post-image">
+      <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071603.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/02/03/streamsets/">StreamSets</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">StreamSets 是我在迁移mysql数据到clickhouse中发现的, 现在来总结一下
+Streamsets是一款大数据实时采集和ETL工具，可以实现不写一行代码完成数据的采集和流转。通...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 03, 2020</span
+          class="post-info-item">
+        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>2386</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/01/08/msl/" class="post-image">
+      <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071603.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/01/08/msl/">Windows10下的子系统Linux</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">Windows10出了一款子系统Linux,可以方便开发者不在需要依赖虚拟机啦
+开始首先你得是windows10最新版本的系统
+进入 系统设置 -&gt; 更新和安全 -&gt; 开发者选项 打...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>January 08, 2020</span
+          class="post-info-item">
+        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>3914</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="col-lg-4 col-md-6 col-sm-12 post-item">
+  <div class="post-wrap">
+    
+    <a href="/2020/01/02/meilin-zerotier/" class="post-image">
+      <img   class="lazyload" data-original="https://pic.izhaoo.com/2014031601.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+    </a>
+    <div class="post-content">
+      <h3 class="post-title"><a href="/2020/01/02/meilin-zerotier/">梅林安装zerotier</a></h3>
+      
+      
+      
+      <div class="post-excerpt">
+        <p class="substr-3">网件R7000刷梅林, 安装zerotier内网穿透工具, 并配置开机自启
+参考
+安装 entware1234567rm -rf /optmkdir /optcd /optwget -O - h...</p>
+      </div>
+      <div class="post-info">
+        <span class="post-info-item"><i class="iconfont iconcalendar"></i>January 02, 2020</span
+          class="post-info-item">
+        
+        <span class="post-info-item"><i class="iconfont iconfont-size"></i>676</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+</section>
+    <section class="paginator">
+  
+  <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
+  
+</section>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=16620457931 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/jzwyz " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:jiangzwyz@163.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
