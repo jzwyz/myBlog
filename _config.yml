@@ -37,17 +37,6 @@ anchorjs: true
 # 使用绝对URL，并在`/`和`/ about /`中使用它
 sidebar-avatar: img/avatar.png
 
-# Friends
-# 友情链接
-friends:
-  [
-    {
-      title: "Linux 命令搜索",
-      href: "https://wangchujiang.com/linux-command/",
-    },
-    { title: "MSDN", href: "https://msdn.itellyou.cn/" },
-  ]
-
 # comment:
 #  type: gitment
 #  id: 7b0d15f37ac970293497
@@ -64,11 +53,7 @@ friends:
 #   livere_id: city
 #   livere_uid: MTAyMC80Mzg5My8yMDQyOA==
 
-# donate:
-#   img: img/donate.jpg
-#   content: 感谢鼓励
-
-# The following content is not recommended to modify
+# 以下内容不建议修改
 # 搜索数据文件路径设置，不建议改动：
 # search:
 #   path: search.json
@@ -90,7 +75,7 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
-# Writing
+# 写作
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
@@ -106,35 +91,31 @@ highlight:
   auto_detect: true
   tab_replace:
 
-# Category & Tag
+# 分类和标签
 default_category: uncategorized
 category_map:
 tag_map:
 
-# Date / Time format
+# 日期/时间格式
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
 ## http://momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
-# 分页设置， 
+# 分页设置
 index_generator:
   path: ""
   per_page: 9 #文章数量改为9篇（3的倍数更和谐）
   order_by: -date
 
-# Extensions
+# 扩展名
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: zhaoo
 
-# Deployment
+# 部署方式
 ## Docs: https://hexo.io/docs/deployment.html
-#deploy:
-#  type: git
-#  repo: your repo url
-#  branch: master
 deploy:
   type: git
   repo: https://github.com/jzwyz/shmily-hexo-blog
