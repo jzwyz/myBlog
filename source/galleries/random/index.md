@@ -1,4 +1,0 @@
----
-title: random
-layout: "gallery"
----
