@@ -29,6 +29,3 @@ Flutter 是 <span style="color:red;">Google</span>推出并开源的移动应用
 ### Flutter Engine
 
 这是一个纯 C++实现的 SDK，其中包括了 Skia引擎、Dart运行时、文字排版引擎等。在代码调用 dart:ui库时，调用最终会走到Engine层，然后实现真正的绘制逻辑。
-
-## 其他
-
