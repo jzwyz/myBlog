@@ -11,7 +11,7 @@
 
     <title>
         
-        了解一下Flutter - Jason的博客 | Jason&#39;s Blog
+        相册 - Jason的博客 | Jason&#39;s Blog
         
     </title>
 
@@ -92,10 +92,6 @@
         </ul>
     </div>
     
-        <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81"><span class="toc-text">特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flutter%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84"><span class="toc-text">Flutter框架结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Flutter-Framework"><span class="toc-text">Flutter Framework</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flutter-Engine"><span class="toc-text">Flutter Engine</span></a></li></ol></li></ol>
-</div>
-    
 </div>
 
 
@@ -120,56 +116,6 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-
-
-<div class="post-container">
-    <div class="post-title">
-        了解一下Flutter
-    </div>
-
-    <div class="post-meta">
-        <span class="attr">发布于：<span>2020-08-06 10:21:56</span></span>
-        
-        <span class="attr">标签：/
-        
-        <a class="tag" href="/tags/#Flutter" title="Flutter">Flutter</a>
-        <span>/</span>
-        
-        
-        </span>
-        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
-</span>
-</span>
-    </div>
-    <div class="post-content ">
-        <p><a target="_blank" rel="noopener" href="https://book.flutterchina.club/">Flutter实战</a></p>
-<p>Flutter 是 <span style="color:red;">Google</span>推出并开源的移动应用开发框架，主打跨平台、高保真、高性能。开发者可以通过 Dart语言开发 App，一套代码同时运行在 iOS 和 Android平台。 Flutter提供了丰富的组件、接口，开发者可以很快地为 Flutter添加 native扩展。同时 Flutter还使用 Native引擎渲染视图，这无疑能为用户提供良好的体验。</p>
-<h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><ul>
-<li>Flutter使用自己的高性能渲染引擎来绘制<strong>widget</strong></li>
-<li>目前Flutter默认支持iOS、Android、Fuchsia（Google新的自研操作系统）三个移动平台。但Flutter亦可支持Web开发（Flutter for web）和PC开发，本书的示例和介绍主要是基于iOS和Android平台的，其它平台读者可以自行了解。</li>
-<li>Flutter APP采用Dart语言开发 Dart在 JIT（即时编译）模式下，速度与 JavaScript基本持平。但是 Dart支持 AOT，当以 AOT模式运行时，JavaScript便远远追不上了</li>
-</ul>
-<h2 id="Flutter框架结构"><a href="#Flutter框架结构" class="headerlink" title="Flutter框架结构"></a>Flutter框架结构</h2><p><img src="./1-1.png" alt="Flutter框架图" title="Flutter框架图"></p>
-<h3 id="Flutter-Framework"><a href="#Flutter-Framework" class="headerlink" title="Flutter Framework"></a>Flutter Framework</h3><p>这是一个纯 Dart实现的 SDK，它实现了一套基础库，自底向上，我们来简单介绍一下：</p>
-<ul>
-<li>底下两层（Foundation和Animation、Painting、Gestures）在Google的一些视频中被合并为一个dart UI层，对应的是Flutter中的dart:ui包，它是Flutter引擎暴露的底层UI库，提供动画、手势及绘制能力。</li>
-<li>Rendering层，这一层是一个抽象的布局层，它依赖于dart UI层，Rendering层会构建一个UI树，当UI树有变化时，会计算出有变化的部分，然后更新UI树，最终将UI树绘制到屏幕上，这个过程类似于React中的虚拟DOM。Rendering层可以说是Flutter UI框架最核心的部分，它除了确定每个UI元素的位置、大小之外还要进行坐标变换、绘制(调用底层dart:ui)。</li>
-<li>Widgets层是Flutter提供的的一套基础组件库，在基础组件库之上，Flutter还提供了 Material 和Cupertino两种视觉风格的组件库。而我们Flutter开发的大多数场景，只是和这两层打交道。</li>
-</ul>
-<h3 id="Flutter-Engine"><a href="#Flutter-Engine" class="headerlink" title="Flutter Engine"></a>Flutter Engine</h3><p>这是一个纯 C++实现的 SDK，其中包括了 Skia引擎、Dart运行时、文字排版引擎等。在代码调用 dart:ui库时，调用最终会走到Engine层，然后实现真正的绘制逻辑。</p>
-
-        
-        <br />
-        <div id="comment-container">
-        </div>
-        <div id="disqus_thread"></div>
-
-        <div id="lv-container">
-        </div>
-
-    </div>
-</div>
-
     </div>
 </div>
 
@@ -235,7 +181,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = true
+    window.isPost = false
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
@@ -245,24 +191,5 @@
 
 
 
-
-    <script type="text/javascript">
-       (function() {
-           if (typeof LivereTower === 'function') { return; }
-
-           var j, d = document.getElementById('lv-container');
-
-           d.setAttribute('data-id','city');
-           d.setAttribute('data-uid' , 'MTAyMC80Mzg5My8yMDQyOA==');
-
-           j = document.createElement('script');
-           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-           j.async = true;
-
-           d.appendChild(j);
-       })();
-    </script>
-    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-    </div>
 
 </html>
