@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html lang="zh" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>clickhouse学习笔记 - Jason Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="ClickHouse是一个用于联机分析(OLAP)的列..."> 
+  
+  <meta name="author" content="Jason"> 
+
+  
+    <link rel="icon" href="/img/icons/favicon-16x16.ico" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/img/icons/favicon-32x32.ico" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/img/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/img/icons/favicon-48x48.ico">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_onl0g0h21np.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: 'https://source.unsplash.com/',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">clickhouse学习笔记</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://pic.izhaoo.com/2017071602.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">clickhouse学习笔记</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 11, 2019</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>6642</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p>ClickHouse是一个用于联机分析(<strong>OLAP</strong>)的<strong>列式</strong>数据库管理系统(DBMS)。</p>
+<h2 id="Clickhouse使用"><a href="#Clickhouse使用" class="headerlink" title="Clickhouse使用"></a>Clickhouse使用</h2><p><a target="_blank" rel="noopener" href="https://clickhouse.yandex/">官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://clickhouse.yandex/docs/zh/">官方文档</a></p>
+<h3 id="入门-单机"><a href="#入门-单机" class="headerlink" title="入门(单机)"></a>入门(单机)</h3><p>使用docker部署</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull yandex/clickhouse-server:latest</span><br><span class="line">docker run -d -p 8123:8123 -p 9000:9000 -p 9009:9009 --name clickhouse yandex/clickhouse-server:latest</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其他方式安装参考 <a target="_blank" rel="noopener" href="https://clickhouse.yandex/docs/zh/getting_started/">部署运行</a></p>
+</blockquote>
+<ol>
+<li>默认没有用户, 设置用户名密码参考 <code>/etc/clickhouse-server/users.xml</code> 做添加/修改</li>
+<li>默认数据库 <code>default</code></li>
+<li>自定义配置文件可以存放在 <code>/etc/clickhouse-server/config.d</code> 和 <code>/etc/clickhouse-server/users.d</code> 分别对应 系统配置/用户配置, 自动融合到主配置文件中</li>
+</ol>
+<h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h4 id="多副本"><a href="#多副本" class="headerlink" title="多副本"></a>多副本</h4><p>在 <code>/etc/clickhouse-server/config.d</code> 下添加配置文件 <code>remote_servers.xml</code>, 例:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">yandex</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">remote_servers</span> <span class="attr">incl</span>=<span class="string">&quot;clickhouse_remote_servers&quot;</span> &gt;</span> <span class="comment">&lt;!--集群节点配置--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">test_clu</span>&gt;</span> <span class="comment">&lt;!-- 集群名称 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">shard</span>&gt;</span> <span class="comment">&lt;!-- 分片1 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>false<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span> <span class="comment">&lt;!-- 插入数据时,向所有副本插入数据 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span> <span class="comment">&lt;!-- 副本1 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">default_database</span>&gt;</span>default<span class="tag">&lt;/<span class="name">default_database</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>$&#123;host_name&#125;<span class="tag">&lt;/<span class="name">host</span>&gt;</span> <span class="comment">&lt;!--ip--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span>  <span class="comment">&lt;!--port--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">user</span>&gt;</span>default<span class="tag">&lt;/<span class="name">user</span>&gt;</span> <span class="comment">&lt;!-- 用户名密码.可选 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">password</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span> <span class="comment">&lt;!-- 副本1 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">default_database</span>&gt;</span>default<span class="tag">&lt;/<span class="name">default_database</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>$&#123;host_name&#125;<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">user</span>&gt;</span>default<span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">password</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">test_clu</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">remote_servers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">yandex</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="分布式-多副本-高可用-同步插入"><a href="#分布式-多副本-高可用-同步插入" class="headerlink" title="分布式+多副本+高可用 (同步插入)"></a>分布式+多副本+高可用 (同步插入)</h4><ol>
+<li>在 <code>/etc/clickhouse-server/config.d</code> 下添加配置文件 <code>remote_servers.xml</code></li>
+<li>在 <code>/etc/clickhouse-server/config.d</code> 下添加配置文件 <code>zookeeper.xml</code></li>
+<li>所有机器都需要创建相同的 <code>副本表、分布式表</code></li>
+<li>zookeeper 用与分布式协调</li>
+<li>分片参数 <code>internal_replication</code> 必须设置为 true</li>
+<li>marcos.xml <strong>每个副本都应该唯一</strong></li>
+</ol>
+<p>sql参考</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--  创建副本表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> default.c_user (</span><br><span class="line">    <span class="string">`id`</span> <span class="built_in">int</span>,</span><br><span class="line">    <span class="string">`name`</span> Nullable(<span class="keyword">String</span>),</span><br><span class="line">    <span class="string">`sex`</span> <span class="built_in">int</span>,</span><br><span class="line">    <span class="string">`address`</span> Nullable(<span class="keyword">String</span>),</span><br><span class="line">    <span class="string">`datetime`</span> <span class="built_in">Date</span> <span class="keyword">DEFAULT</span> <span class="keyword">now</span>()</span><br><span class="line">) <span class="keyword">ENGINE</span> =MergeTree();</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建分布式表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> default.user_all (</span><br><span class="line">    <span class="string">`id`</span> <span class="built_in">int</span>,</span><br><span class="line">    <span class="string">`name`</span> Nullable(<span class="keyword">String</span>),</span><br><span class="line">    <span class="string">`sex`</span> <span class="built_in">int</span>,</span><br><span class="line">    <span class="string">`address`</span> Nullable(<span class="keyword">String</span>),</span><br><span class="line">    <span class="string">`datetime`</span> <span class="built_in">Date</span> <span class="keyword">DEFAULT</span> <span class="keyword">now</span>()</span><br><span class="line">) <span class="keyword">engine</span> = <span class="keyword">Distributed</span>(test_clu, <span class="string">&#x27;default&#x27;</span>, <span class="string">&#x27;c_user&#x27;</span>, <span class="keyword">rand</span>()); <span class="comment">-- 集群名称, 数据库, 副本表, 集群数据分配策略</span></span><br></pre></td></tr></table></figure>
+
+<p><code>remote_servers.xml</code> 参考配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">yandex</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">remote_servers</span> <span class="attr">incl</span>=<span class="string">&quot;clickhouse_remote_servers&quot;</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">test_clu</span>&gt;</span> <span class="comment">&lt;!-- 集群名称 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">shard</span>&gt;</span> <span class="comment">&lt;!-- 分片1 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span> <span class="comment">&lt;!-- 插入数据时,向所有副本插入数据 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span> <span class="comment">&lt;!-- 副本1 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">default_database</span>&gt;</span>default<span class="tag">&lt;/<span class="name">default_database</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>clickhouse_s1<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">user</span>&gt;</span>default<span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">password</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span> <span class="comment">&lt;!-- 副本2 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">default_database</span>&gt;</span>default<span class="tag">&lt;/<span class="name">default_database</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>clickhouse_s3<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">user</span>&gt;</span>default<span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">password</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">shard</span>&gt;</span> <span class="comment">&lt;!-- 分片2 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span> <span class="comment">&lt;!-- 副本1 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">default_database</span>&gt;</span>default<span class="tag">&lt;/<span class="name">default_database</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>clickhouse_s2<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">user</span>&gt;</span>default<span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">password</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span> <span class="comment">&lt;!-- 副本2 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">default_database</span>&gt;</span>default<span class="tag">&lt;/<span class="name">default_database</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>clickhouse_s4<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">user</span>&gt;</span>default<span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">password</span>&gt;</span>123456<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">test_clu</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">remote_servers</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 数据压缩算法 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">clickhouse_compression</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">case</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">min_part_size</span>&gt;</span>10000000000<span class="tag">&lt;/<span class="name">min_part_size</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">min_part_size_ratio</span>&gt;</span>0.01<span class="tag">&lt;/<span class="name">min_part_size_ratio</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">method</span>&gt;</span>lz4<span class="tag">&lt;/<span class="name">method</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">case</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">clickhouse_compression</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">yandex</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>zookeeper.xml</code> 参考配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">yandex</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">zookeeper</span> <span class="attr">incl</span>=<span class="string">&quot;zookeeper-servers&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">node</span> <span class="attr">index</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">host</span>&gt;</span>clickhouse_zk0<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">port</span>&gt;</span>2181<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">node</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 多节点配置</span></span><br><span class="line"><span class="comment">        &lt;node index=&quot;2&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;host&gt;clickhouse_zk1&lt;/host&gt;</span></span><br><span class="line"><span class="comment">            &lt;port&gt;2181&lt;/port&gt;</span></span><br><span class="line"><span class="comment">        &lt;/node&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">zookeeper</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">yandex</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="分布式-多副本-高可用-复制表"><a href="#分布式-多副本-高可用-复制表" class="headerlink" title="分布式+多副本+高可用 (复制表)"></a>分布式+多副本+高可用 (复制表)</h4><p>上面的基础上再在 <code>/etc/clickhouse-server/config.d</code> 下添加配置文件 <code>macros.xml</code></p>
+<p>这个方式与上面<em>同步插入</em>的区别是 <em>插入数据时,只向一个副本插入,其他副本自动复制数据</em>, 我们需要将表引擎由<code>MergeTree</code>改为<code>ReplicatedMergeTree</code></p>
+<p>参考sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--  创建副本表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> default.c_user (</span><br><span class="line">    <span class="string">`id`</span> <span class="built_in">int</span>,</span><br><span class="line">    <span class="string">`name`</span> Nullable(<span class="keyword">String</span>),</span><br><span class="line">    <span class="string">`sex`</span> <span class="built_in">int</span>,</span><br><span class="line">    <span class="string">`address`</span> Nullable(<span class="keyword">String</span>),</span><br><span class="line">    <span class="string">`datetime`</span> <span class="built_in">Date</span> <span class="keyword">DEFAULT</span> <span class="keyword">now</span>()</span><br><span class="line">) <span class="keyword">ENGINE</span> =ReplicatedMergeTree(<span class="string">&#x27;/clickhouse/tables/&#123;shard&#125;/default/c_user&#x27;</span>, <span class="string">&#x27;&#123;replica&#125;&#x27;</span>,<span class="string">`datetime`</span> ,(<span class="string">`datetime`</span>,<span class="string">`id`</span>),<span class="number">8192</span>);</span><br><span class="line"><span class="comment">-- &#123;shard&#125; 会自动从 macros.xml 中获取配置</span></span><br><span class="line"><span class="comment">-- &#123;replica&#125; 会自动从 macros.xml 中获取配置</span></span><br><span class="line"><span class="comment">-- `datetime` 是时间类型的字段</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建分布式表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> default.user_all (</span><br><span class="line">    <span class="string">`id`</span> <span class="built_in">int</span>,</span><br><span class="line">    <span class="string">`name`</span> Nullable(<span class="keyword">String</span>),</span><br><span class="line">    <span class="string">`sex`</span> <span class="built_in">int</span>,</span><br><span class="line">    <span class="string">`address`</span> Nullable(<span class="keyword">String</span>),</span><br><span class="line">    <span class="string">`datetime`</span> <span class="built_in">Date</span> <span class="keyword">DEFAULT</span> <span class="keyword">now</span>()</span><br><span class="line">) <span class="keyword">engine</span> = <span class="keyword">Distributed</span>(test_clu, <span class="string">&#x27;default&#x27;</span>, <span class="string">&#x27;c_user&#x27;</span>, <span class="keyword">rand</span>());</span><br></pre></td></tr></table></figure>
+
+<p>marcos.xml 参考配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">yandex</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">macros</span> <span class="attr">replace</span>=<span class="string">&quot;replace&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">shard</span>&gt;</span>SHARD_NAME<span class="tag">&lt;/<span class="name">shard</span>&gt;</span> <span class="comment">&lt;!--集群ID--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">replica</span>&gt;</span>REPLICA_NAME<span class="tag">&lt;/<span class="name">replica</span>&gt;</span> <span class="comment">&lt;!--副本ID--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">macros</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">yandex</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>每个副本都应该唯一</strong></p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>clickhouse用于大数据查询, 占用空间少, 查询速度快</p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Jason</li>
+  <li><strong>本文链接：</strong><a href="https://jzwyz.github.io/2019/10/11/clickhouse/index.html">https://jzwyz.github.io/2019/10/11/clickhouse/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2019/10/22/graphql/"><i class="iconfont iconleft"></i>GraphQL 学习</a>
+  
+  
+    <a href="/2019/07/17/cron/">cron表达式<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "qeJ7YhQ3Yd5SDysepRzx9WAb-9Nh9j0Va",
+        app_key: "nPjHzaeFz8WAQ6E7NlAOPEUj",
+        placeholder: "雁过留痕",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=16620457931 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/jzwyz " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:jiangzwyz@163.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

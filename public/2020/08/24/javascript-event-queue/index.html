@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html lang="zh" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>了解javascript的执行机制 - Jason Blog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="参考《这一次，彻底弄懂 JavaScript 执行机制..."> 
+  
+  <meta name="author" content="Jason"> 
+
+  
+    <link rel="icon" href="/img/icons/favicon-16x16.ico" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/img/icons/favicon-32x32.ico" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/img/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/img/icons/favicon-48x48.ico">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_onl0g0h21np.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: 'https://source.unsplash.com/',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">了解javascript的执行机制</div>
+  <div class="right">
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="https://pic.izhaoo.com/2014031601.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">了解javascript的执行机制</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 24, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5072</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903512845860872#heading-0">参考《这一次，彻底弄懂 JavaScript 执行机制 - 掘金》</a><br><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903764202094606">参考《一次弄懂Event Loop（彻底解决此类面试问题）- 掘金》</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/139983258">参考《2020前端面试必会知识点 - 灰蓝宇墨的文章 - 知乎》</a></p>
+<h2 id="关于JavaScript的说明"><a href="#关于JavaScript的说明" class="headerlink" title="关于JavaScript的说明"></a>关于JavaScript的说明</h2><p>JavaScript是一门<strong>单线程</strong>编程语言, 一切的关于JavaScript的多线程都是单线程模拟出来的</p>
+<p>不管是什么新框架新语法糖实现的所谓异步, 其实都是用同步的方法去模拟的</p>
+<h2 id="JavaScript的执行机制"><a href="#JavaScript的执行机制" class="headerlink" title="JavaScript的执行机制"></a>JavaScript的执行机制</h2><p>JavaScript的执行机制: <strong>事件循环(Event Loop)</strong></p>
+<p>事件循环是js实现异步的一种方法，也是js的执行机制。</p>
+<p>注意区分<strong>执行</strong>和<strong>运行</strong></p>
+<h2 id="广义的同步任务和异步任务"><a href="#广义的同步任务和异步任务" class="headerlink" title="广义的同步任务和异步任务"></a>广义的同步任务和异步任务</h2><ol>
+<li>同步任务</li>
+<li>异步任务</li>
+</ol>
+<p><img   class="lazyload" data-original="./1.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt=" "></p>
+<p>简单的文字描述图片中的内容:</p>
+<ul>
+<li>同步和异步任务分别进入不同的执行”场所”，同步的进入主线程，异步的进入<strong>Event Table</strong>并注册函数。</li>
+<li>当指定的事情完成时，Event Table会将这个函数移入<strong>Event Queue</strong>。</li>
+<li>主线程内的任务执行完毕为空，会去Event Queue读取对应的函数，进入主线程执行。</li>
+<li>上述过程会不断重复，也就是常说的**Event Loop(事件循环)**。</li>
+</ul>
+<blockquote>
+<p>js引擎存在<strong>monitoring process</strong>进程，会持续不断的检查主线程执行栈是否为空，一旦为空，就会去Event Queue那里检查是否有等待被调用的函数</p>
+</blockquote>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>参考一下ajax的执行过程</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = [];</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url:www.javascript.com,</span><br><span class="line">    data:data,</span><br><span class="line">    success:<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;发送成功!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;代码执行结束&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ajax进入Event Table，注册回调函数success。</li>
+<li>执行console.log(‘代码执行结束’)。</li>
+<li>ajax事件完成，回调函数success进入Event Queue。</li>
+<li>主线程从Event Queue读取回调函数success并执行。</li>
+</ul>
+<h3 id="常用-setTimeout、setInterval-函数"><a href="#常用-setTimeout、setInterval-函数" class="headerlink" title="常用 setTimeout、setInterval 函数"></a>常用 setTimeout、setInterval 函数</h3><h4 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h4><p>平时经常使用<code>setTimeout</code>函数定时执行一些业务</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;延时3秒&#x27;</span>);</span><br><span class="line">&#125;,<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>随着<code>setTimeout</code>的越来越多, 问题也就来了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;延时3秒&#x27;</span>);</span><br><span class="line">&#125;,<span class="number">3000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;---&gt; 执行:console&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ---&gt; 执行:console</span></span><br><span class="line"><span class="comment">// 延迟3秒</span></span><br></pre></td></tr></table></figure>
+
+<p>这个结果是正确的, 但是我们稍微改一下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    task()</span><br><span class="line">&#125;,<span class="number">3000</span>);</span><br><span class="line">sleep(<span class="number">100000</span>); <span class="comment">// 这里假设执行业务代码耗时比较长</span></span><br></pre></td></tr></table></figure>
+
+<p>这个时候执行<code>task()</code>输出时间就不止延迟3秒了,</p>
+<ul>
+<li><code>task()</code>进入Event Table并注册,计时开始。</li>
+<li>执行<code>sleep</code>函数，很慢，非常慢，计时仍在继续。</li>
+<li>3秒到了，计时事件timeout完成，<code>task()</code>进入Event Queue，但是<code>sleep</code>也太慢了吧，还没执行完，只好等着。</li>
+<li><code>sleep</code>终于执行完了，<code>task()</code>终于从Event Queue进入了主线程执行。</li>
+</ul>
+<p><code>setTimeout</code>函数的定义是, 函数等待定义的时间之后才进入Event Queue, 又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒</p>
+<h4 id="setInterval"><a href="#setInterval" class="headerlink" title="setInterval"></a>setInterval</h4><p><code>setInterval</code>跟<code>setTimeout</code>效果差不多, 区别是<code>setInterval</code>会每隔指定的时间将注册的函数置入Event Queue，如果前面的任务耗时太久，那么同样需要等待.</p>
+<p>唯一需要注意的一点是，对于setInterval(fn,ms)来说，我们已经知道不是每过ms秒会执行一次fn，而是每过ms秒，会有fn进入Event Queue。<strong>一旦setInterval的回调函数fn执行时间超过了延迟时间ms，那么就完全看不出来有时间间隔了。</strong></p>
+<h2 id="任务还有更精细的定义-宏任务-微任务"><a href="#任务还有更精细的定义-宏任务-微任务" class="headerlink" title="任务还有更精细的定义 宏任务/微任务"></a>任务还有更精细的定义 宏任务/微任务</h2><ol>
+<li>macro-task(宏任务)：包括整体代码script，setTimeout，setInterval</li>
+<li>micro-task(微任务)：Promise，process.nextTick</li>
+</ol>
+<blockquote>
+<p>不同类型的任务会进入对应的Event Queue，比如setTimeout和setInterval会进入相同的Event Queue。</p>
+</blockquote>
+<p>除了传统的定时器<code>setInterval</code>和<code>setTimeout</code>外, 我们还要了解的<code>Promise</code>和<code>process.nextTick</code></p>
+<ol>
+<li><code>Promise</code>可以参考<a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/promise">阮一峰老师的Promise讲解</a></li>
+<li><code>process.nextTick</code>类似node.js版的<code>setTimeout</code></li>
+</ol>
+<p>事件循环的顺序，决定js代码的执行顺序。进入整体代码(宏任务)后，开始第一次循环。接着执行所有的微任务。然后再次从宏任务开始，找到其中一个任务队列执行完毕，再执行所有的微任务。</p>
+<p>举例:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;promise&#x27;</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;then&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;console&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这段代码作为宏任务，进入主线程。</li>
+<li>先遇到setTimeout，那么将其回调函数注册后分发到宏任务Event Queue。(注册过程与上同，下文不再描述)</li>
+<li>接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。</li>
+<li>遇到console.log()，立即执行。</li>
+<li>好啦，整体代码script作为第一个宏任务执行结束，看看有哪些微任务？我们发现了then在微任务Event Queue里面，执行。</li>
+<li>ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event Queue开始。我们发现了宏任务Event Queue中setTimeout对应的回调函数，立即执行。</li>
+<li>结束。</li>
+</ul>
+<p>关系图</p>
+<p><img   class="lazyload" data-original="./2.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt=" "></p>
+<p>一段较复杂的javascript代码, 分析一下它的输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;2&#x27;</span>);</span><br><span class="line">    process.nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;3&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;4&#x27;</span>);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;5&#x27;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">process.nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;6&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;7&#x27;</span>);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;8&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;9&#x27;</span>);</span><br><span class="line">    process.nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;10&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;11&#x27;</span>);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;12&#x27;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>第一轮事件循环流程分析如下：</p>
+<ol>
+<li>整体script作为第一个宏任务进入主线程，遇到console.log，输出1。</li>
+<li>遇到setTimeout，其回调函数被分发到宏任务Event Queue中。我们暂且记为setTimeout1。</li>
+<li>遇到process.nextTick()，其回调函数被分发到微任务Event Queue中。我们记为process1。</li>
+<li>遇到Promise，new Promise直接执行，输出7。then被分发到微任务Event Queue中。我们记为then1。</li>
+<li>又遇到了setTimeout，其回调函数被分发到宏任务Event Queue中，我们记为setTimeout2。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">宏任务Event Queue</th>
+<th align="center">微任务Event Queue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">setTimeout1</td>
+<td align="center">process1</td>
+</tr>
+<tr>
+<td align="center">setTimeout2</td>
+<td align="center">then1</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>上表是第一轮事件循环宏任务结束时各Event Queue的情况，此时已经输出了1和7。</p>
+</blockquote>
+<p>我们发现了process1和then1两个微任务。</p>
+<ol>
+<li>执行process1,输出6。</li>
+<li>执行then1，输出8。</li>
+</ol>
+<p>第一轮事件循环正式结束，这一轮的结果是输出<code>1，7，6，8</code>。</p>
+<p>第二轮时间循环从setTimeout1宏任务开始: </p>
+<ol>
+<li>首先输出2。接下来遇到了<code>process.nextTick()</code>，同样将其分发到微任务Event Queue中，记为process2。</li>
+<li><code>new Promise</code>立即执行输出4，then也分发到微任务Event Queue中，记为then2。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">宏任务Event Queue</th>
+<th align="center">微任务Event Queue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">setTimeout2</td>
+<td align="center">process2</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">then2</td>
+</tr>
+</tbody></table>
+<p>第二轮事件循环宏任务结束，我们发现有process2和then2两个微任务可以执行。</p>
+<ol>
+<li>输出3。</li>
+<li>输出5。</li>
+</ol>
+<p>第二轮事件循环结束，第二轮输出<code>2，4，3，5</code>。</p>
+<p>第三轮事件循环开始，此时只剩setTimeout2了，执行。</p>
+<ol>
+<li>直接输出9。</li>
+<li>将process.nextTick()分发到微任务Event Queue中。记为process3。</li>
+<li>直接执行new Promise，输出11。</li>
+<li>将then分发到微任务Event Queue中，记为then3。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">宏任务Event Queue</th>
+<th align="center">微任务Event Queue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center">process3</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">then3</td>
+</tr>
+</tbody></table>
+<p>第三轮事件循环宏任务执行结束，执行两个微任务process3和then3。</p>
+<ol>
+<li>输出10。</li>
+<li>输出12。</li>
+</ol>
+<p>第三轮事件循环结束，第三轮输出<code>9，11，10，12</code>。</p>
+<p>整段代码，共进行了三次事件循环，完整的输出为<code>1，7，6，8，2，4，3，5，9，11，10，12</code>。*(请注意，node环境下的事件监听依赖libuv与前端环境不完全相同，输出顺序可能会有误差)*</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="javascript学习路线"><a href="#javascript学习路线" class="headerlink" title="javascript学习路线"></a>javascript学习路线</h3><p><img   class="lazyload" data-original="./3.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt=" "></p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Jason</li>
+  <li><strong>本文链接：</strong><a href="https://jzwyz.github.io/2020/08/24/javascript-event-queue/index.html">https://jzwyz.github.io/2020/08/24/javascript-event-queue/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2020/08/26/hackintosh/"><i class="iconfont iconleft"></i>黑苹果折腾记</a>
+  
+  
+    <a href="/2020/08/06/flutter/">了解一下Flutter<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "qeJ7YhQ3Yd5SDysepRzx9WAb-9Nh9j0Va",
+        app_key: "nPjHzaeFz8WAQ6E7NlAOPEUj",
+        placeholder: "雁过留痕",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    if ( true ) {
+      $("#comments-btn").on("click", function () {
+        $(this).hide();
+        loadValine();
+      });
+    } else {
+      loadValine();
+    }
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=16620457931 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/jzwyz " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:jiangzwyz@163.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
