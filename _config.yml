@@ -4,7 +4,7 @@
 
 # Site
 # 网站综合内容设置：
-title: Jason Blog
+title: Jason's Blog
 subtitle: Jason
 description: 一个小伙子的个人博客
 author: Jason
@@ -17,7 +17,7 @@ keyword: "Jason的博客"
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://jzwyz.github.io
-root: /shmily-blog
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -134,5 +134,5 @@ theme: aircloud
 #  branch: master
 deploy:
   type: git
-  repo: https://github.com/jzwyz/shmily-hexo-blog
+  repo: https://github.com/jzwyz/jzwyz.github.io
   branch: gh-pages
